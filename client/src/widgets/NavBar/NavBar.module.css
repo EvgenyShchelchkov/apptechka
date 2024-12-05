@@ -1,0 +1,119 @@
+.container {
+  flex-grow: 1 !important;
+}
+
+.appBar {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.toolbar {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.logoSection {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.logoSection img {
+  width: 40px !important;
+  height: 40px !important;
+  margin-right: 10px !important;
+  vertical-align: middle !important;
+}
+
+.logoSection .navLink {
+  display: flex !important;
+  align-items: center !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #333333 !important;
+  text-decoration: none !important;
+}
+
+.navigationSection {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 24px !important;
+}
+
+.navLink {
+  color: #333333 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  transition: color 0.3s ease !important;
+}
+
+.navLink:hover {
+  color: goldenrod !important;
+}
+
+.accountSection {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.userName {
+  color: #333333 !important;
+  font-size: 1rem !important;
+  white-space: nowrap !important;
+}
+
+.separator {
+  color: #333333 !important;
+  margin: 0 16px !important;
+  user-select: none !important;
+}
+
+.desktopMenu {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.mobileMenu {
+  display: none !important;
+}
+
+.buttonSupport {
+  border-radius: 28px !important;
+  padding: 10px 20px !important;
+  text-transform: none !important;
+  font-size: 1.1rem !important;
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.buttonSupport:hover {
+  background-color: goldenrod !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (max-width: 900px) {
+  .desktopMenu {
+    display: none !important;
+  }
+
+  .mobileMenu {
+    display: flex !important;
+  }
+
+  .logoSection img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
