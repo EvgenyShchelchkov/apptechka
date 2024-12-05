@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 function App(): React.JSX.Element {
-  const [count, setCount] = useState(0);
+ 
 
-  return (
+  return ( 
 <></>
   );
 }
