@@ -7,7 +7,7 @@ class MedkitService {
     this.#db = db;
   }
 
-  getAllMedkits() {
+  async getAllMedkits() {
     return this.#db.MedKit.findAll({
       include: [
         {
@@ -38,8 +38,7 @@ class MedkitService {
   }
 
   async createMedkit(data) {
-    const newMedkit = await this.#db.MedKit.create(data);
-    return newMedkit;
+    return this.#db.MedKit.create(data);
   }
 
   async updateMedkit(id, data) {

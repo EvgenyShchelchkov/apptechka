@@ -1,4 +1,8 @@
 const medicineService = require('../services/medicine.service');
+const medkitService = require('../services/medkit.service');
+const upload = require('../middlewares/multer');
+const fs = require('fs/promises');
+const sharp = require('sharp');
 
 class MedicineController {
   #service;
@@ -30,9 +34,42 @@ class MedicineController {
 
   createMedicine = async (req, res) => {
     try {
-      const data = req.body;
-      const newMedicine = await this.#service.createMedicine(data);
-      res.status(200).json(newMedicine);
+      const { med_kit_id, name, description, code, presciption, category, quantity, expiration } =
+        req.body;
+      const medKit = await medkitService.getOneMedkit(med_kit_id);
+      if (!medKit) {
+        return res.status(404).json({ message: 'Аптечка не найдена' });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ message: 'Файл не загружен' });
+      }
+
+      const nameFile = `${Date.now()}.webp`;
+      const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
+      await fs.writeFile(`./public/${nameFile}`, outputBuffer);
+
+      const newMedicine = await this.#service.createMedicine({
+        name,
+        description,
+        code,
+        img: nameFile,
+        presciption,
+        category,
+        user_id: res.locals.user.id,
+      });
+
+      const medicineInstance = await this.#service.createMedicineInstance({
+        medicine_id: newMedicine.id,
+        med_kit_id,
+        quantity,
+        expiration,
+      });
+
+      res.status(201).json({
+        message: 'Лекарство добавлено в аптечку',
+        medicineInstance,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Ошибка сервера' });

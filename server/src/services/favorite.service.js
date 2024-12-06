@@ -7,20 +7,17 @@ class FavoriteService {
     this.#db = db;
   }
 
-  async getFavorites(user_id) {
+  async getFavorites() {
     return this.#db.Favorite.findAll({
-      where: { user_id },
       include: [
         {
-          model: Medicine,
+          model: this.#db.MedicineInstance,
           include: [
             {
-              model: MedicineInstance,
-              include: [
-                {
-                  model: MedKit,
-                },
-              ],
+              model: this.#db.Medicine,
+            },
+            {
+              model: this.#db.MedKit,
             },
           ],
         },
@@ -33,15 +30,13 @@ class FavoriteService {
       where: { id },
       include: [
         {
-          model: Medicine,
+          model: this.#db.MedicineInstance,
           include: [
             {
-              model: MedicineInstance,
-              include: [
-                {
-                  model: MedKit,
-                },
-              ],
+              model: this.#db.Medicine,
+            },
+            {
+              model: this.#db.MedKit,
             },
           ],
         },

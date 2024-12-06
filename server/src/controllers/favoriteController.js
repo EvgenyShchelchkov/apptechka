@@ -9,12 +9,11 @@ class FavoriteController {
 
   getFavorites = async (req, res) => {
     try {
-      const user_id = res.locals.user.id;
-      const favorites = await this.#service.getFavorites(user_id);
+      const favorites = await this.#service.getFavorites();
       res.status(200).json(favorites);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Ошибка сервера' });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
