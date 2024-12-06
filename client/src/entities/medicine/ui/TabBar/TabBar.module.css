@@ -1,0 +1,44 @@
+.tabBarContainer {
+  width: 100%;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+  min-height: 48px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+  text-transform: none;
+  font-weight: 500;
+  min-height: 48px;
+  padding: 0 24px;
+}
+
+.tab:hover {
+  color: goldenrod !important;
+  opacity: 1;
+}
+
+.tab[aria-selected='true'] {
+  color: goldenrod !important;
+}
+
+.tabs :global(.MuiTabs-indicator) {
+  background-color: goldenrod !important;
+}
+
+.tabs :global(.MuiTabs-scrollButtons) {
+  color: goldenrod !important;
+}
+
+@media (max-width: 600px) {
+  .tab {
+    padding: 0 16px !important;
+    min-width: auto !important;
+  }
+}
