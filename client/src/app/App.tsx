@@ -8,13 +8,14 @@ import AppRouterProvider from './router/AppRouterProvider.js';
 export default function App(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const userError = useAppSelector((state) => state.auth.error);
+  const medicineError = useAppSelector((state) => state.medicine.error);
 
   return (
     <>
       <Helmet>
         <link rel="icon" type="image/png" href="logo/logo-vite.png" />
       </Helmet>
-      {userError && (
+      {userError && medicineError && (
         <Alert
           variant="outlined"
           severity="error"

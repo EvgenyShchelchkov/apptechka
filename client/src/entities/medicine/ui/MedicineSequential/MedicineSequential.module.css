@@ -1,0 +1,38 @@
+.item {
+  background-color: #fff !important;
+  padding: 8px !important;
+  text-align: center !important;
+  color: #000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  border-radius: 16px !important;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s !important;
+}
+
+.item:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.medicineImage {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.medicineName {
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+  margin: 4px 0 !important;
+}
+
+.medicineDescription {
+  font-size: 0.9rem !important;
+  color: #666 !important;
+  margin: 0 !important;
+}

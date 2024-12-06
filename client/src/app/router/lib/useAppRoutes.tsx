@@ -1,5 +1,6 @@
 import type { RouteObject } from 'react-router-dom';
 import { fetchAllLikes } from '../../../entities/like/model/likeThunks.js';
+import { fetchMedicines } from '../../../entities/medicine/model/medicineThunks.js';
 import { refreshThunk } from '../../../entities/user/model/authThunks.js';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage.js';
 import MainPage from '../../../pages/MainPage/MainPage.js';
@@ -18,15 +19,20 @@ export default function useAppRoutes(): RouteObject[] {
       path: '/',
       element: <Layout />,
       errorElement: <ErrorPage />,
-      loader: () => Promise.all([dispatch(refreshThunk()), dispatch(fetchAllLikes())]),
+      loader: () =>
+        Promise.all([
+          dispatch(refreshThunk()),
+          dispatch(fetchAllLikes()),
+          dispatch(fetchMedicines()),
+        ]),
       children: [
+        {
+          path: '/',
+          element: <MainPage />,
+        },
         {
           element: <ProtectedRouter isAllowed={!!isUser} redirectTo="/" />,
           children: [
-            {
-              path: '/',
-              element: <MainPage />,
-            },
             // {
             //   path: '/book',
             //   element: <BookPage />,
