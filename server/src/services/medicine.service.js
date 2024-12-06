@@ -38,8 +38,11 @@ class MedicineService {
   }
 
   async createMedicine(data) {
-    const newMedicine = await this.#db.Medicine.create(data);
-    return newMedicine;
+    return this.#db.Medicine.create(data);
+  }
+
+  async createMedicineInstance(data) {
+    return this.#db.MedicineInstance.create(data);
   }
 
   async updateMedicine(id, data) {

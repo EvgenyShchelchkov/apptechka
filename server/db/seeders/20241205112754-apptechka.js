@@ -128,6 +128,20 @@ module.exports = {
         med_kit_id: 2,
       },
     ]);
+    await queryInterface.bulkInsert('Favorites', [
+      {
+        user_id: 1,
+        medicine_instance_id: 1,
+      },
+      {
+        user_id: 1,
+        medicine_instance_id: 2,
+      },
+      {
+        user_id: 1,
+        medicine_instance_id: 3,
+      },
+    ]);
   },
 
   async down(queryInterface, Sequelize) {

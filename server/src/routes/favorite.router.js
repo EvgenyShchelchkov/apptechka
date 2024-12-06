@@ -1,8 +1,12 @@
-const express = require('express');
-const { getFavorites } = require('../controllers/favoriteController');
-const router = express.Router();
+const favoriteController = require('../controllers/favoriteController');
+const favoriteRouter = require('express').Router();
+const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
-// Получить все избранные лекарства
-router.get('/favorites', getFavorites);
+favoriteRouter.route('/').get(verifyAccessToken, favoriteController.getFavorites);
 
-module.exports = router;
+favoriteRouter
+  .route('/:id')
+  .get(verifyAccessToken, favoriteController.getOneMedicine)
+  .delete(verifyAccessToken, favoriteController.deleteMedicine);
+
+module.exports = favoriteRouter;
