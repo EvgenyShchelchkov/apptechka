@@ -1,12 +1,13 @@
 import { Alert } from '@mui/material';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useAppSelector } from '../shared/lib/hooks.js';
+import { setClearError } from '../entities/user/model/authSlice.js';
+import { useAppDispatch, useAppSelector } from '../shared/lib/hooks.js';
 import AppRouterProvider from './router/AppRouterProvider.js';
 
 export default function App(): React.JSX.Element {
+  const dispatch = useAppDispatch();
   const userError = useAppSelector((state) => state.auth.error);
-  // const error = useAppSelector((state) => state.book.error);
 
   return (
     <>
@@ -26,6 +27,7 @@ export default function App(): React.JSX.Element {
             width: '100%',
             maxWidth: 575,
           }}
+          onClose={() => dispatch(setClearError())}
         >
           {userError}
         </Alert>
