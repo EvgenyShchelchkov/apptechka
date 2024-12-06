@@ -39,19 +39,22 @@ export default function NavBar(): React.JSX.Element {
           <Box className={styles.toolbar}>
             <Box className={styles.logoSection}>
               <NavLink to="/" className={styles.navLink}>
-                <img src="logo/logo-preview.png" alt="logo" />
+                <img src="logo/logo.png" alt="logo" />
                 <Typography variant="h6" noWrap>
-                  Citadel Hub
+                  AppTechka
                 </Typography>
               </NavLink>
             </Box>
 
             <Box className={styles.navigationSection}>
-              <NavLink to="/book" className={styles.navLink}>
-                Books
+              <NavLink to="/medicine" className={styles.navLink}>
+                Medicines
               </NavLink>
-              <NavLink to="/book/new" className={styles.navLink}>
-                New Book
+              <NavLink to="/favorite" className={styles.navLink}>
+                Favorites
+              </NavLink>
+              <NavLink to="/drugstore" className={styles.navLink}>
+                Drugstores
               </NavLink>
             </Box>
 
