@@ -1,6 +1,6 @@
 .background {
   position: fixed !important;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  background: linear-gradient(180deg, rgb(245, 245, 245), rgb(255, 240, 245)) !important;
   top: 56px !important;
   left: 0 !important;
   right: 0 !important;
@@ -15,7 +15,7 @@
   background-color: #ffffff !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   border-radius: 16px !important;
-  border: 1px solid #000 !important;
+  border: 1px solid rgb(185 20 30) !important;
   text-align: center !important;
 }
 
@@ -29,7 +29,7 @@
 .title {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
-  color: #000 !important;
+  color: rgb(185 20 30) !important;
   margin-bottom: 16px !important;
 }
 
@@ -41,17 +41,17 @@
 .button {
   width: 100% !important;
   max-width: 400px !important;
-  background-color: #000 !important;
+  background-color: rgb(185 20 30) !important;
   color: #ffffff !important;
   text-transform: none !important;
   font-size: 1.1rem !important;
   transition:
-    background-color 0.3s ease !important,
+    background-color 0.3s ease,
     transform 0.2s ease !important;
 }
 
 .button:hover {
-  background-color: goldenrod !important;
+  background-color: rgb(140, 15, 20) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
 }
