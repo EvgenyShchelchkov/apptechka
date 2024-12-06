@@ -1,17 +1,28 @@
 import type { AxiosInstance } from 'axios';
-import type { ProductFormDataT, ProductT } from '../schemas/product.schema';
-import { productSchema } from '../schemas/product.schema';
-import axiosInstance from '../api/axiosInstance';
+import axiosInstance from '../shared/api/axiosInstance';
+import type { MedkitFormDataT, MedkitT } from '../schemas/medkit.schemas';
+import { medkitSchema } from '../schemas/medkit.schemas';
 
-class ProductService {
+class MedkitService {
   constructor(private readonly client: AxiosInstance) {
     this.client = client;
   }
 
-  async getAll(): Promise<ProductT[]> {
+  async getAllMedkits(): Promise<MedkitT[]> {
     try {
-      const response = await this.client.get('/products');
-      return productSchema.array().parse(response.data);
+      const response = await this.client.get('/medkits');
+      return medkitSchema.array().parse(response.data);
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) return Promise.reject(error);
+      return Promise.reject(new Error('Странная ошбика'));
+    }
+  }
+  
+  async getOneMedkit(id: number): Promise<MedkitT['id']> {
+    try {
+      await this.client.get<MedkitT>(`/medkits/${id.toString()}`);
+      return id;
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -19,10 +30,10 @@ class ProductService {
     }
   }
 
-  async addProduct(formData: ProductFormDataT): Promise<ProductT> {
+  async createMedkit(formData: MedkitFormDataT): Promise<MedkitT> {
     try {
-      const response = await this.client.post('/products', formData);
-      return productSchema.parse(response.data);
+      const response = await this.client.post('/medkits', formData);
+      return medkitSchema.parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -30,10 +41,22 @@ class ProductService {
     }
   }
 
-  async update(id: ProductT['id'], formData: ProductFormDataT): Promise<ProductT> {
+
+  async updateMedkit(id: MedkitT['id'], formData: MedkitFormDataT): Promise<MedkitT> {
     try {
-      const response = await this.client.put(`/products/${id.toString()}`, formData);
-      return productSchema.parse(response.data);
+      const response = await this.client.put(`/medkits/${id.toString()}`, formData);
+      return medkitSchema.parse(response.data);
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) return Promise.reject(error);
+      return Promise.reject(new Error('Странная ошбика'));
+    }
+  }
+
+  async deleteMedkit(id: number): Promise<MedkitT['id']> {
+    try {
+      await this.client.delete<MedkitT>(`/medkits/${id.toString()}`);
+      return id;
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -42,4 +65,4 @@ class ProductService {
   }
 }
 
-export default new ProductService(axiosInstance);
+export default new MedkitService(axiosInstance);
