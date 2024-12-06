@@ -13,7 +13,7 @@ class MedicineController {
       res.json(medicines);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -24,7 +24,7 @@ class MedicineController {
       res.status(200).json(medicine);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -35,7 +35,7 @@ class MedicineController {
       res.status(200).json(newMedicine);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -47,7 +47,7 @@ class MedicineController {
       res.status(200).json(updatedMedicine);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -58,7 +58,7 @@ class MedicineController {
       res.sendStatus(200);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 }

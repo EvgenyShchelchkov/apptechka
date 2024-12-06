@@ -12,9 +12,11 @@ class MedicineService {
       include: [
         {
           model: this.#db.MedicineInstance,
-          include: {
-            model: this.#db.MedKit,
-          },
+          include: [
+            {
+              model: this.#db.MedKit,
+            },
+          ],
         },
       ],
     });
@@ -22,12 +24,16 @@ class MedicineService {
 
   async getOneMedicine(id) {
     return this.#db.Medicine.findByPk(id, {
-      include: {
-        model: this.#db.MedicineInstance,
-        include: {
-          model: this.#db.MedKit,
+      include: [
+        {
+          model: this.#db.MedicineInstance,
+          include: [
+            {
+              model: this.#db.MedKit,
+            },
+          ],
         },
-      },
+      ],
     });
   }
 
