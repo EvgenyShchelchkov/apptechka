@@ -1,6 +1,6 @@
 const medicineService = require('../services/medicine.service');
 const medkitService = require('../services/medkit.service');
-const upload = require('../middlewares/multer');
+
 const fs = require('fs/promises');
 const sharp = require('sharp');
 

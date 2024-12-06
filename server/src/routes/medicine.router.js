@@ -6,7 +6,7 @@ const medicineRouter = require('express').Router();
 
 medicineRouter
   .route('/')
-  .get(verifyAccessToken, medicineController.getAllMedicines)
+  .get(medicineController.getAllMedicines)
   .post(verifyAccessToken, upload.single('file'), medicineController.createMedicine);
 
 medicineRouter

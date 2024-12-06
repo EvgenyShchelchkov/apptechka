@@ -2,7 +2,7 @@ const favoriteController = require('../controllers/favoriteController');
 const favoriteRouter = require('express').Router();
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
 
-favoriteRouter.route('/').get(verifyAccessToken, favoriteController.getFavorites);
+favoriteRouter.route('/').get(favoriteController.getFavorites);
 
 favoriteRouter
   .route('/:id')
