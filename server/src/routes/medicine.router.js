@@ -1,5 +1,6 @@
 const medicineController = require('../controllers/medicineController');
 const verifyAccessToken = require('../middlewares/verifyAccessToken');
+const upload = require('../middlewares/multer');
 
 const medicineRouter = require('express').Router();
 
