@@ -10,7 +10,7 @@ export default function MainPage(): React.JSX.Element {
   // const [openModal, setOpenModal] = useState(() => !localStorage.getItem('cookieAccepted'));
 
   useEffect(() => {
-    const message = `Halo, ${user} 🖖`;
+    const message = `Halo, ${user ?? 'Гость'} 🖖`;
     const timer = setInterval(() => {
       setGreeting((prev) => {
         if (prev.length < message.length) {

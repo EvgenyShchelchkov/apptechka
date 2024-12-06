@@ -6,7 +6,6 @@ import AppRouterProvider from './router/AppRouterProvider.js';
 
 export default function App(): React.JSX.Element {
   const userError = useAppSelector((state) => state.auth.error);
-  console.log(userError);
   // const error = useAppSelector((state) => state.book.error);
 
   return (
@@ -14,12 +13,24 @@ export default function App(): React.JSX.Element {
       <Helmet>
         <link rel="icon" type="image/png" href="logo/logo-vite.png" />
       </Helmet>
-      <AppRouterProvider />
       {userError && (
-        <Alert variant="outlined" severity="error">
+        <Alert
+          variant="outlined"
+          severity="error"
+          style={{
+            position: 'fixed',
+            top: '20%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 100,
+            width: '100%',
+            maxWidth: 575,
+          }}
+        >
           {userError}
         </Alert>
       )}
+      <AppRouterProvider />
     </>
   );
 }
