@@ -21,6 +21,11 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
+      img: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+        defaultValue: 'https://cdn-icons-png.flaticon.com/512/4710/4710113.png',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

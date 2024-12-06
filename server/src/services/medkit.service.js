@@ -9,12 +9,16 @@ class MedkitService {
 
   getAllMedkits() {
     return this.#db.MedKit.findAll({
-      include: {
-        model: this.#db.MedicineInstance,
-        include: {
-          model: this.#db.Medicine,
+      include: [
+        {
+          model: this.#db.MedicineInstance,
+          include: [
+            {
+              model: this.#db.Medicine,
+            },
+          ],
         },
-      },
+      ],
     });
   }
 
