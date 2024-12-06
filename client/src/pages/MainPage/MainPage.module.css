@@ -1,13 +1,13 @@
 .container {
   position: fixed !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  background: linear-gradient(180deg, rgb(245, 245, 245), rgb(255, 240, 245)) !important;
   top: 0 !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .paper {
@@ -17,7 +17,7 @@
   background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(4px) !important;
   border-radius: 16px !important;
-  border: 1px solid #000 !important;
+  border: 1px solid rgb(185 20 30) !important;
   animation: fadeIn 0.5s ease-in !important;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .subtitle {
-  color: #666666 !important;
+  color: rgb(140, 15, 20) !important;
   margin-bottom: 32px !important;
 }
 
@@ -37,17 +37,17 @@
   max-width: 200px !important;
   border-radius: 12px !important;
   padding: 10px 30px !important;
-  background-color: #333333 !important;
+  background-color: rgb(185 20 30) !important;
   color: #ffffff !important;
   text-transform: none !important;
   font-size: 1.1rem !important;
   transition:
-    background-color 0.3s ease !important,
+    background-color 0.3s ease,
     transform 0.2s ease !important;
 }
 
 .button:hover {
-  background-color: goldenrod !important;
+  background-color: rgb(140, 15, 20) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
 }

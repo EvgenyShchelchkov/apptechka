@@ -8,11 +8,33 @@ class MedkitService {
   }
 
   getAllMedkits() {
-    return this.#db.MedKit.findAll();
+    return this.#db.MedKit.findAll({
+      include: [
+        {
+          model: this.#db.MedicineInstance,
+          include: [
+            {
+              model: this.#db.Medicine,
+            },
+          ],
+        },
+      ],
+    });
   }
 
   async getOneMedkit(id) {
-    return this.#db.MedKit.findByPk(id);
+    return this.#db.MedKit.findByPk(id, {
+      include: [
+        {
+          model: this.#db.MedicineInstance,
+          include: [
+            {
+              model: this.#db.Medicine,
+            },
+          ],
+        },
+      ],
+    });
   }
 
   async createMedkit(data) {

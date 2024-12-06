@@ -3,7 +3,7 @@
 }
 
 .appBar {
-  background-color: #ffffff !important;
+  background-color: rgb(185 20 30) !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -21,8 +21,8 @@
 }
 
 .logoSection img {
-  width: 40px !important;
-  height: 40px !important;
+  width: 80px !important;
+  height: 80px !important;
   margin-right: 10px !important;
   vertical-align: middle !important;
 }
@@ -32,7 +32,7 @@
   align-items: center !important;
   font-size: 1.25rem !important;
   font-weight: 600 !important;
-  color: #333333 !important;
+  color: whitesmoke !important;
   text-decoration: none !important;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .navLink {
-  color: #333333 !important;
+  color: whitesmoke !important;
   text-decoration: none !important;
   white-space: nowrap !important;
   font-size: 1rem !important;
@@ -53,7 +53,7 @@
 }
 
 .navLink:hover {
-  color: goldenrod !important;
+  color: rgb(50, 50, 50) !important;
 }
 
 .accountSection {
@@ -65,13 +65,13 @@
 }
 
 .userName {
-  color: #333333 !important;
+  color: whitesmoke !important;
   font-size: 1rem !important;
   white-space: nowrap !important;
 }
 
 .separator {
-  color: #333333 !important;
+  color: whitesmoke !important;
   margin: 0 16px !important;
   user-select: none !important;
 }
@@ -84,6 +84,7 @@
 
 .mobileMenu {
   display: none !important;
+  color: whitesmoke !important;
 }
 
 .buttonSupport {
@@ -91,8 +92,8 @@
   padding: 10px 20px !important;
   text-transform: none !important;
   font-size: 1.1rem !important;
-  background-color: #333333 !important;
-  color: #ffffff !important;
+  background-color: whitesmoke !important;
+  color: rgb(185 20 30) !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   transition: all 0.3s ease !important;
 }
