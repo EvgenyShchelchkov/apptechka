@@ -1,22 +1,20 @@
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import ModalCookie from '../../widgets/ModalCookie';
+import { useAppSelector } from '../../shared/lib/hooks';
 import styles from './MainPage.module.css';
 
-export default function MainPage({
-  welcomeText = 'Добро пожаловать в Citadel Hub!',
-}: {
-  welcomeText?: string;
-}): React.JSX.Element {
+export default function MainPage(): React.JSX.Element {
+  const user = useAppSelector((state) => state.auth.user?.name);
   const [greeting, setGreeting] = useState('');
-  const [openModal, setOpenModal] = useState(() => !localStorage.getItem('cookieAccepted'));
+  // const [openModal, setOpenModal] = useState(() => !localStorage.getItem('cookieAccepted'));
 
   useEffect(() => {
+    const message = `Halo, ${user} 🖖`;
     const timer = setInterval(() => {
       setGreeting((prev) => {
-        if (prev.length < welcomeText.length) {
-          return prev + welcomeText[prev.length];
+        if (prev.length < message.length) {
+          return prev + message[prev.length];
         }
         clearInterval(timer);
         return prev;
@@ -24,12 +22,12 @@ export default function MainPage({
     }, 100);
 
     return () => clearInterval(timer);
-  }, [welcomeText]);
+  }, [user]);
 
-  const handleCloseModal = (): void => {
-    setOpenModal(false);
-    localStorage.setItem('cookieAccepted', 'true');
-  };
+  // const handleCloseModal = (): void => {
+  //   setOpenModal(false);
+  //   localStorage.setItem('cookieAccepted', 'true');
+  // };
 
   return (
     <>
@@ -52,8 +50,6 @@ export default function MainPage({
           </Paper>
         </Container>
       </Box>
-
-      <ModalCookie open={openModal} close={handleCloseModal} />
     </>
   );
 }

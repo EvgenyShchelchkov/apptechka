@@ -13,7 +13,7 @@ class MedkitController {
       res.json(medkits);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -24,7 +24,7 @@ class MedkitController {
       res.status(200).json(oneMedkit);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -38,7 +38,7 @@ class MedkitController {
       res.status(200).json(newMedkit);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера', error });
+      res.status(500).json({ message: 'Ошибка сервера' });
     }
   };
 
@@ -49,7 +49,7 @@ class MedkitController {
       res.sendStatus(200);
     } catch (error) {
       console.log(error);
-      res.status(500).send({ message: 'Ошибка удаления ресторана' });
+      res.status(500).send({ message: 'Ошибка сервера' });
     }
   };
 
@@ -61,7 +61,7 @@ class MedkitController {
       res.status(200).json(update);
     } catch (error) {
       console.log(error);
-      res.status(500).send({ message: 'Ошибка изменения заметки' });
+      res.status(500).send({ message: 'Ошибка сервера' });
     }
   };
 }
