@@ -9,6 +9,7 @@ const favoriteRouter = require('./routes/favorite.router');
 
 const app = express();
 
+app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));

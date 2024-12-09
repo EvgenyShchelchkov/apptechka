@@ -1,7 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 import { fetchAllLikes } from '../../../entities/like/model/likeThunks.js';
 import { fetchMedicines } from '../../../entities/medicine/model/medicine.thunks.js';
-import { fetchMedkits, fetchOneMedkit } from '../../../entities/medkit/model/medkit.thunk.js';
+import { fetchMedkits } from '../../../entities/medkit/model/medkit.thunk.js';
 import { refreshThunk } from '../../../entities/user/model/authThunks.js';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage.js';
 import MainPage from '../../../pages/MainPage/MainPage.js';
@@ -16,7 +16,7 @@ import OneMedkitPage from '../../../pages/OneMedkitPage/OneMedkitPage.js';
 export default function useAppRoutes(): RouteObject[] {
   const dispatch = useAppDispatch();
   const isUser = useAppSelector((state) => !!state.auth.user);
-  const id =
+  // const medkit = useAppSelector((state) => state.medkit.items)
 
   return [
     {
@@ -29,7 +29,6 @@ export default function useAppRoutes(): RouteObject[] {
           dispatch(fetchAllLikes()),
           dispatch(fetchMedicines()),
           dispatch(fetchMedkits()),
-          dispatch(fetchOneMedkit(id: number)),
         ]),
       children: [
         {
@@ -40,7 +39,7 @@ export default function useAppRoutes(): RouteObject[] {
           element: <ProtectedRouter isAllowed={!!isUser} redirectTo="/" />,
           children: [
             {
-              path: '/medkit',
+              path: '/medkits',
               element: <MedkitPage />,
             },
             {
