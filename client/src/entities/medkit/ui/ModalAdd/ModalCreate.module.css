@@ -1,0 +1,66 @@
+.modalBox {
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 400px;
+  margin: 10% auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.modalTitle {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.closeButton {
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.closeButton:hover {
+  color: #000;
+}
+
+.textField {
+  margin-bottom: 16px;
+}
+
+.textField .MuiOutlinedInput-root {
+  border-color: red;
+}
+
+.textField .MuiOutlinedInput-root:hover fieldset {
+  border-color: darkred;
+}
+
+.textField .MuiInputLabel-root {
+  color: red;
+}
+
+.createButton {
+  margin-top: 16px;
+  color: #fff;
+  background-color: red;
+  text-transform: none;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.createButton:hover {
+  background-color: darkred;
+}

@@ -3,38 +3,37 @@ import { Box, Button, IconButton, Modal, TextField, Typography } from '@mui/mate
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
 import { closeModal } from '../../model/medkit.slice';
-import { updateMedkitThunk } from '../../model/medkit.thunk';
-import styles from './ModalUpdate.module.css';
+import { createMedkitThunk } from '../../model/medkit.thunk';
+import styles from './ModalCreate.module.css';
 
-export default function ModalUpdate(): React.JSX.Element {
+export default function ModalCreate(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const showModal = useAppSelector((state) => state.medkit.showModal);
-  const medkit = useAppSelector((state) => state.medkit.selected);
 
   const closeHandler = (): void => {
     void dispatch(closeModal());
   };
 
-  const submitHandler: React.FormEventHandler<HTMLFormElement> = (e): void => {
+  const createHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    void dispatch(updateMedkitThunk({ id: medkit.id, formData }));
+    void dispatch(createMedkitThunk(formData));
     closeHandler();
   };
 
   return (
-    <Modal open={showModal} onClose={closeHandler} aria-labelledby="edit-modal-title">
+    <Modal open={showModal} onClose={closeHandler} aria-labelledby="add-modal-title">
       <Box className={styles.modalBox}>
         <Box className={styles.modalHeader}>
-          <Typography id="edit-modal-title" variant="h6" className={styles.modalTitle}>
-            Изменить аптечку
+          <Typography id="add-modal-title" variant="h6" className={styles.modalTitle}>
+            Добавить аптечку
           </Typography>
           <IconButton onClick={closeHandler} aria-label="close" className={styles.closeButton}>
             <CloseIcon />
           </IconButton>
         </Box>
 
-        <form onSubmit={submitHandler}>
+        <form onSubmit={createHandler}>
           <TextField
             fullWidth
             name="name"
@@ -42,7 +41,6 @@ export default function ModalUpdate(): React.JSX.Element {
             variant="outlined"
             margin="normal"
             required
-            defaultValue={medkit?.name}
             className={styles.textField}
           />
           <TextField
@@ -51,11 +49,11 @@ export default function ModalUpdate(): React.JSX.Element {
             label="URL изображения"
             variant="outlined"
             margin="normal"
-            defaultValue={medkit?.img}
+            defaultValue="https://cdn-icons-png.flaticon.com/512/4710/4710113.png"
             className={styles.textField}
           />
-          <Button type="submit" variant="contained" className={styles.updateButton}>
-            Обновить
+          <Button type="submit" variant="contained" className={styles.createButton}>
+            Создать
           </Button>
         </form>
       </Box>
