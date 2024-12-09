@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
-import { createLikeThunk, deleteLikeThunk } from '../../../like/model/likeThunks';
+import { createLikeThunk, deleteLikeThunk } from '../../../like/model/like.thunks';
 import { selectBook } from '../../model/medicine.slice';
 import { deleteBookThunk } from '../../model/medicine.thunks';
 import type { BookType } from '../../model/types';

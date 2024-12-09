@@ -2,20 +2,21 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, IconButton, Modal, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
-import { closeModal } from '../../model/medkit.slice';
+import { closeUpdateModal, selectMedkit } from '../../model/medkit.slice';
 import { updateMedkitThunk } from '../../model/medkit.thunk';
 import styles from './ModalUpdate.module.css';
 
 export default function ModalUpdate(): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const showModal = useAppSelector((state) => state.medkit.showModal);
   const medkit = useAppSelector((state) => state.medkit.selected);
 
   const closeHandler = (): void => {
-    void dispatch(closeModal());
+    void dispatch(closeUpdateModal());
+    void dispatch(selectMedkit(null));
   };
 
   const submitHandler: React.FormEventHandler<HTMLFormElement> = (e): void => {
+    if (!medkit) return;
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     void dispatch(updateMedkitThunk({ id: medkit.id, formData }));
@@ -23,7 +24,7 @@ export default function ModalUpdate(): React.JSX.Element {
   };
 
   return (
-    <Modal open={showModal} onClose={closeHandler} aria-labelledby="edit-modal-title">
+    <Modal open={!!medkit} onClose={closeHandler} aria-labelledby="edit-modal-title">
       <Box className={styles.modalBox}>
         <Box className={styles.modalHeader}>
           <Typography id="edit-modal-title" variant="h6" className={styles.modalTitle}>

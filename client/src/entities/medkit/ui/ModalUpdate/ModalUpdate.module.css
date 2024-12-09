@@ -1,47 +1,39 @@
 .modalBox {
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 8px;
-  width: 400px;
-  margin: auto;
-  margin-top: 10%;
+  padding: 16px !important;
+  background-color: #fff !important;
+  border-radius: 8px !important;
+  width: 400px !important;
+  margin: auto !important;
+  margin-top: 10% !important;
 }
 
 .modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
 .modalTitle {
-  color: red;
+  color: red !important;
 }
 
 .closeButton {
-  color: red;
+  color: red !important;
 }
 
 .textField {
-  width: 100%;
-}
-
-.textFieldOutlined {
-  border-color: red;
-}
-
-.textFieldLabel {
-  color: red;
+  width: 100% !important;
 }
 
 .updateButton {
-  margin-top: 16px;
-  color: #fff;
-  background-color: red;
-  text-transform: none;
-  padding: 6px 16px;
-  min-width: auto;
+  margin-top: 16px !important;
+  color: #fff !important;
+  background-color: red !important;
+  text-transform: none !important;
+  padding: 6px 16px !important;
+  min-width: auto !important;
 }
 
 .updateButton:hover {
-  background-color: darkred;
+  background-color: darkred !important;
 }

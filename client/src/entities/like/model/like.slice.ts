@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { createLikeThunk, deleteLikeThunk, fetchAllLikes } from './likeThunks';
+import { createLikeThunk, deleteLikeThunk, fetchAllLikes } from './like.thunks';
 import type { LikeSliceType, LikeType } from './types';
 
 const initialState: LikeSliceType = {

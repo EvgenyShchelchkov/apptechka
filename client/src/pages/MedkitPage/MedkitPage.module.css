@@ -1,24 +1,24 @@
 .pageContainer {
-  padding: 16px;
-  position: relative;
+  padding: 16px !important;
+  position: relative !important;
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 16px;
+  font-size: 2rem !important;
+  margin-bottom: 16px !important;
 }
 
 .cardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: space-around;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  justify-content: space-around !important;
 }
 
 .button {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  color: red;
-  font-size: 3rem;
+  position: fixed !important;
+  bottom: 16px !important;
+  right: 16px !important;
+  color: red !important;
+  font-size: 3rem !important;
 }
