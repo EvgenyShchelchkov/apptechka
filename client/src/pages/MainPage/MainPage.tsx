@@ -34,7 +34,7 @@ export default function MainPage(): React.JSX.Element {
           <Typography variant="h6" gutterBottom className={styles.subtitle}>
             Мы рады видеть вас здесь (ﾉ◕ヮ◕)ﾉ:･ﾟ✧
           </Typography>
-          <NavLink to="/inventory" style={{ textDecoration: 'none' }}>
+          <NavLink to="/medkit" style={{ textDecoration: 'none' }}>
             <Button className={styles.button} size="large" color="secondary">
               Перейти к запасам!
             </Button>

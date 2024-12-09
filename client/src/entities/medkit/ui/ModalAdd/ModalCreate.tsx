@@ -2,16 +2,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, IconButton, Modal, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
-import { closeModal } from '../../model/medkit.slice';
+import { closeCreateModal } from '../../model/medkit.slice';
 import { createMedkitThunk } from '../../model/medkit.thunk';
 import styles from './ModalCreate.module.css';
 
 export default function ModalCreate(): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const showModal = useAppSelector((state) => state.medkit.showModal);
+  const showCreateModal = useAppSelector((state) => state.medkit.showCreateModal);
 
   const closeHandler = (): void => {
-    void dispatch(closeModal());
+    void dispatch(closeCreateModal());
   };
 
   const createHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -22,7 +22,7 @@ export default function ModalCreate(): React.JSX.Element {
   };
 
   return (
-    <Modal open={showModal} onClose={closeHandler} aria-labelledby="add-modal-title">
+    <Modal open={showCreateModal} onClose={closeHandler} aria-labelledby="add-modal-title">
       <Box className={styles.modalBox}>
         <Box className={styles.modalHeader}>
           <Typography id="add-modal-title" variant="h6" className={styles.modalTitle}>

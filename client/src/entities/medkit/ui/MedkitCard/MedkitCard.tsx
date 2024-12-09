@@ -4,7 +4,7 @@ import MedicalInformationTwoToneIcon from '@mui/icons-material/MedicalInformatio
 import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../../../../shared/lib/hooks';
-import { openModal } from '../../model/medkit.slice';
+import { selectMedkit } from '../../model/medkit.slice';
 import { deleteMedkitThunk } from '../../model/medkit.thunk';
 import type { MedkitType } from '../../model/types';
 import ModalUpdate from '../ModalUpdate/ModalUpdate';
@@ -17,13 +17,8 @@ type MedkitCardProps = {
 export default function MedkitCard({ medkit }: MedkitCardProps): React.JSX.Element {
   const dispatch = useAppDispatch();
 
-  const editHandler = (medkit: MedkitType): void => {
-    void dispatch(openModal(medkit));
-  };
-
-  const deleteHandler = (id: number): void => {
-    if (!id) return;
-    void dispatch(deleteMedkitThunk(id));
+  const deleteHandler = (): void => {
+    void dispatch(deleteMedkitThunk(medkit.id));
   };
 
   return (
@@ -40,10 +35,10 @@ export default function MedkitCard({ medkit }: MedkitCardProps): React.JSX.Eleme
             <IconButton color="error">
               <MedicalInformationTwoToneIcon />
             </IconButton>
-            <IconButton color="error" onClick={editHandler}>
+            <IconButton color="error" onClick={() => void dispatch(selectMedkit(medkit))}>
               <CreateIcon />
             </IconButton>
-            <IconButton color="error" onClick={() => deleteHandler(medkit.id)}>
+            <IconButton color="error" onClick={deleteHandler}>
               <DeleteForeverTwoToneIcon />
             </IconButton>
           </Box>

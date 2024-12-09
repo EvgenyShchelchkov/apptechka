@@ -13,7 +13,8 @@ import type { MedkitSliceType, MedkitType } from './types';
 const initialState: MedkitSliceType = {
   items: [],
   error: null,
-  showModal: false,
+  showCreateModal: false,
+  showUpdateModal: false,
   isLoading: false,
   selected: null,
 };
@@ -28,12 +29,17 @@ export const medkitSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
-    openModal: (state) => {
-      state.showModal = true;
-      // state = action.payload;
+    openCreateModal: (state) => {
+      state.showCreateModal = true;
     },
-    closeModal: (state) => {
-      state.showModal = false;
+    openUpdateModal: (state) => {
+      state.showUpdateModal = true;
+    },
+    closeCreateModal: (state) => {
+      state.showCreateModal = false;
+    },
+    closeUpdateModal: (state) => {
+      state.showUpdateModal = false;
     },
     selectMedkit: (state, action: PayloadAction<MedkitType | null>) => {
       state.selected = action.payload;
@@ -78,7 +84,7 @@ export const medkitSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateMedkitThunk.fulfilled, (state, action) => {
-        state.items = state.items.map((el) => (el.id === action.payload.id ? action.payload : el));
+        state.items[state.items.findIndex((el) => el.id === action.payload.id)] = action.payload;
         state.isLoading = false;
       })
       .addCase(updateMedkitThunk.rejected, (state) => {
@@ -98,6 +104,14 @@ export const medkitSlice = createSlice({
   },
 });
 
-export const { setError, clearError, openModal, closeModal, selectMedkit } = medkitSlice.actions;
+export const {
+  setError,
+  clearError,
+  openCreateModal,
+  openUpdateModal,
+  closeCreateModal,
+  closeUpdateModal,
+  selectMedkit,
+} = medkitSlice.actions;
 
 export default medkitSlice.reducer;

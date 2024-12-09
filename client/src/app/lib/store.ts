@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import likeReducer from '../../entities/like/model/likeSlice';
+import likeReducer from '../../entities/like/model/like.slice';
 import medicineReducer from '../../entities/medicine/model/medicine.slice';
 import medkitReducer from '../../entities/medkit/model/medkit.slice';
 import authReducer from '../../entities/user/model/authSlice';

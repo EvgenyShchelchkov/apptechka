@@ -6,7 +6,8 @@ export type MedkitFormDataType = z.infer<typeof medkitFormSchema>;
 export type MedkitSliceType = {
   items: MedkitType[];
   error: string | null;
-  showModal: boolean;
+  showCreateModal: boolean;
+  showUpdateModal: boolean;
   isLoading: boolean;
   selected: MedkitType | null;
 };

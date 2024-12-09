@@ -41,13 +41,10 @@ class MedkitService {
     }
   }
 
-  async updateMedkit(
-    id: MedkitType['id'],
-    formData: MedkitFormDataType,
-  ): Promise<MedkitFormDataType> {
+  async updateMedkit(id: number, formData: MedkitType): Promise<MedkitType> {
     try {
       const response = await this.client.put(`/medkits/${id.toString()}`, formData);
-      return medkitFormSchema.parse(response.data);
+      return medkitSchema.parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -57,7 +54,7 @@ class MedkitService {
 
   async deleteMedkit(id: number): Promise<MedkitType['id']> {
     try {
-      await this.client.delete<MedkitType>(`/medkits/${id.toString()}`);
+      await this.client.delete(`/medkits/${id.toString()}`);
       return id;
     } catch (error) {
       console.error(error);

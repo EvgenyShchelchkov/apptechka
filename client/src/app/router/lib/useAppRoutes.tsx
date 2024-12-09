@@ -1,9 +1,10 @@
 import type { RouteObject } from 'react-router-dom';
-import { fetchAllLikes } from '../../../entities/like/model/likeThunks.js';
+import { fetchAllLikes } from '../../../entities/like/model/like.thunks.js';
 import { fetchMedicines } from '../../../entities/medicine/model/medicine.thunks.js';
 import { fetchMedkits } from '../../../entities/medkit/model/medkit.thunk.js';
 import { refreshThunk } from '../../../entities/user/model/authThunks.js';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage.js';
+import FavoritePage from '../../../pages/FavoritePage/FavoritePage.js';
 import MainPage from '../../../pages/MainPage/MainPage.js';
 import MedkitPage from '../../../pages/MedkitPage/MedkitPage.js';
 import SignInPage from '../../../pages/SignInPage/SignInPage.js';
@@ -45,6 +46,14 @@ export default function useAppRoutes(): RouteObject[] {
               path: '/medkits/:id',
               element: <OneMedkitPage />,
             },
+            {
+              path: '/favorites',
+              element: <FavoritePage />,
+            },
+            // {
+            //   path: '/book/new',
+            //   element: <NewBookPage />,
+            // },
           ],
         },
         {
