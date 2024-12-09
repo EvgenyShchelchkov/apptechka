@@ -9,6 +9,7 @@ import SignUpPage from '../../../pages/SignUpPage/SignUpPage.js';
 import { useAppDispatch, useAppSelector } from '../../../shared/lib/hooks.js';
 import Layout from '../../layout/Layout.js';
 import ProtectedRouter from '../feature/ProtectedRouter/ProtectedRouter.js';
+import MedkitPage from '../../../pages/MedkitPage/MedkitPage.js';
 
 export default function useAppRoutes(): RouteObject[] {
   const dispatch = useAppDispatch();
@@ -33,10 +34,10 @@ export default function useAppRoutes(): RouteObject[] {
         {
           element: <ProtectedRouter isAllowed={!!isUser} redirectTo="/" />,
           children: [
-            // {
-            //   path: '/book',
-            //   element: <BookPage />,
-            // },
+            {
+              path: '/medkits',
+              element: <MedkitPage />,
+            },
             // {
             //   path: '/book/new',
             //   element: <NewBookPage />,
