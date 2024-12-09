@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
 import { fetchMedkits } from '../../entities/medkit/model/medkit.thunk';
 import { Box, Typography, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { openAddModal } from '../../entities/medkit/model/medkitSlice';
 import ModalAdd from '../../entities/medkit/ui/ModalAdd/ModalAdd';
 import MedkitCard from '../../entities/medkit/ui/MedkitCard/MedkitCard';
 

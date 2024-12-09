@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
 import { fetchOneMedkit } from '../../entities/medkit/model/medkit.thunk';
-import { number } from 'zod';
 import { Box, IconButton, Typography } from '@mui/material';
 import MedicineCard from '../../entities/medicine/ui/MedicineCard/MedicineCard';
 
@@ -32,7 +31,7 @@ export default function OneMedkitPage(): React.JSX.Element {
 
       {/* Кнопка добавления */}
       <IconButton
-        onClick={openAddHandler}
+        // onClick={openAddHandler}
         sx={{
           position: 'fixed',
           bottom: 16,
@@ -41,10 +40,10 @@ export default function OneMedkitPage(): React.JSX.Element {
           fontSize: '3rem', // Увеличение размера
         }}
       >
-        <AddCircleIcon fontSize="inherit" />
+        {/* <AddCircleIcon fontSize="inherit" /> */}
       </IconButton>
 
-      <ModalAdd />
+      {/* <ModalAdd /> */}
     </Box>
   )
 }
