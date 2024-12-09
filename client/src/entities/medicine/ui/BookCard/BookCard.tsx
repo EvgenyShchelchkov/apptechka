@@ -18,8 +18,8 @@ import {
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
 import { createLikeThunk, deleteLikeThunk } from '../../../like/model/likeThunks';
-import { selectBook } from '../../model/medicineSlice';
-import { deleteBookThunk } from '../../model/medicineThunks';
+import { selectBook } from '../../model/medicine.slice';
+import { deleteBookThunk } from '../../model/medicine.thunks';
 import type { BookType } from '../../model/types';
 import ModalUpdate from '../ModalUpdate';
 import styles from './BookCard.module.css';

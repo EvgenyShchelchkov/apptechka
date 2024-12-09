@@ -11,5 +11,6 @@ export type MedicineSliceType = {
     key: SortableKeysType;
     order: 'asc' | 'desc';
   };
+  isLoading: boolean;
   selected: MedicineType | null;
 };

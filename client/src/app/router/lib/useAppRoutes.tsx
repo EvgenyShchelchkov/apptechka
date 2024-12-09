@@ -1,6 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 import { fetchAllLikes } from '../../../entities/like/model/likeThunks.js';
-import { fetchMedicines } from '../../../entities/medicine/model/medicineThunks.js';
+import { fetchMedicines } from '../../../entities/medicine/model/medicine.thunks.js';
+import { fetchMedkits } from '../../../entities/medkit/model/medkit.thunk.js';
 import { refreshThunk } from '../../../entities/user/model/authThunks.js';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage.js';
 import MainPage from '../../../pages/MainPage/MainPage.js';
@@ -24,6 +25,7 @@ export default function useAppRoutes(): RouteObject[] {
           dispatch(refreshThunk()),
           dispatch(fetchAllLikes()),
           dispatch(fetchMedicines()),
+          dispatch(fetchMedkits()),
         ]),
       children: [
         {

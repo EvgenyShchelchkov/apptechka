@@ -1,5 +1,5 @@
 declare const styles: {
-  readonly spinnerContainer: string;
+  readonly loader: string;
 };
 
 export = styles;

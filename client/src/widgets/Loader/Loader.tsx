@@ -1,13 +1,24 @@
-import type { ReactNode } from 'react';
 import React from 'react';
-import SpinnerUi from '../SpinnerUI/Spinner';
+import { ClimbingBoxLoader } from 'react-spinners';
+import { useAppSelector } from '../../shared/lib/hooks';
+import styles from './Loader.module.css';
 
 type LoaderProps = {
-  showSpinner: boolean;
-  children: ReactNode;
+  children?: React.ReactNode;
 };
 
-export default function Loader({ showSpinner, children }: LoaderProps): React.JSX.Element {
-  if (showSpinner) return <SpinnerUi />;
-  return <>{children}</>;
+export default function Loader({ children }: LoaderProps): React.JSX.Element {
+  const isLoading = useAppSelector((state) => state.medicine.isLoading);
+
+  return (
+    <>
+      {isLoading ? (
+        <div className={styles.loader}>
+          <ClimbingBoxLoader loading size={20} />
+        </div>
+      ) : (
+        children
+      )}
+    </>
+  );
 }

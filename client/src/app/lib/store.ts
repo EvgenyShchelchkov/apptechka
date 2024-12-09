@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import likeReducer from '../../entities/like/model/likeSlice';
-import medicineReducer from '../../entities/medicine/model/medicineSlice';
+import medicineReducer from '../../entities/medicine/model/medicine.slice';
+import medkitReducer from '../../entities/medkit/model/medkit.slice';
 import authReducer from '../../entities/user/model/authSlice';
 export const store = configureStore({
   reducer: {
+    medkit: medkitReducer,
     medicine: medicineReducer,
     like: likeReducer,
     auth: authReducer,

@@ -47,12 +47,11 @@ class MedicineService {
 
   async updateMedicine(id, data) {
     const medicine = await this.#db.Medicine.findByPk(id);
-    await medicine.update(data);
-    return medicine;
+    return await medicine.update(data);
   }
 
   async deleteMedicine(id) {
-    await this.#db.Medicine.destroy({ where: { id } });
+    return await this.#db.Medicine.destroy({ where: { id } });
   }
 }
 

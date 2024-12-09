@@ -6,7 +6,7 @@ favoriteRouter.route('/').get(verifyAccessToken, favoriteController.getFavorites
 
 favoriteRouter
   .route('/:id')
-  .get(verifyAccessToken, favoriteController.getOneMedicine)
+  .get(favoriteController.getOneMedicine)
   .delete(verifyAccessToken, favoriteController.deleteMedicine);
 
 module.exports = favoriteRouter;

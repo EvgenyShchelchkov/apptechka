@@ -43,12 +43,11 @@ class MedkitService {
 
   async updateMedkit(id, data) {
     const medkit = await this.#db.MedKit.findByPk(id);
-    await medkit.update(data);
-    return medkit;
+    return await medkit.update(data);
   }
 
   async deleteMedkit(id) {
-    await this.#db.MedKit.destroy({ where: { id } });
+    return await this.#db.MedKit.destroy({ where: { id } });
   }
 }
 

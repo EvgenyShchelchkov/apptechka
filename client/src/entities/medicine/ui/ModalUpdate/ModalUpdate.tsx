@@ -2,8 +2,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, IconButton, Modal, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
-import { selectBook } from '../../model/medicineSlice';
-import { updateBookThunk } from '../../model/medicineThunks';
+import { selectBook } from '../../model/medicine.slice';
+import { updateBookThunk } from '../../model/medicine.thunks';
 import styles from './ModalUpdate.module.css';
 
 export default function ModalUpdate(): React.JSX.Element {
