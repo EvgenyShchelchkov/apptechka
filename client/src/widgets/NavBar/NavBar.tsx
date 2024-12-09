@@ -39,7 +39,7 @@ export default function NavBar(): React.JSX.Element {
           <Box className={styles.toolbar}>
             <Box className={styles.logoSection}>
               <NavLink to="/" className={styles.navLink}>
-                <img src="logo/logo.png" alt="logo" />
+                <img src="/logo/logo.png" alt="logo" />
                 <Typography variant="h6" noWrap>
                   AppTechka
                 </Typography>
@@ -47,7 +47,7 @@ export default function NavBar(): React.JSX.Element {
             </Box>
 
             <Box className={styles.navigationSection}>
-              <NavLink to="/medkit" className={styles.navLink}>
+              <NavLink to="/medkits" className={styles.navLink}>
                 Medkits
               </NavLink>
               <NavLink to="/medicine" className={styles.navLink}>

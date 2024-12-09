@@ -17,6 +17,7 @@ import OneMedkitPage from '../../../pages/OneMedkitPage/OneMedkitPage.js';
 export default function useAppRoutes(): RouteObject[] {
   const dispatch = useAppDispatch();
   const isUser = useAppSelector((state) => !!state.auth.user);
+  // const medkit = useAppSelector((state) => state.medkit.items)
 
   return [
     {
@@ -39,7 +40,7 @@ export default function useAppRoutes(): RouteObject[] {
           element: <ProtectedRouter isAllowed={!!isUser} redirectTo="/" />,
           children: [
             {
-              path: '/medkit',
+              path: '/medkits',
               element: <MedkitPage />,
             },
             {

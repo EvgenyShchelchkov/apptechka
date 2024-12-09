@@ -7,8 +7,8 @@ import { useAppDispatch } from '../../../../shared/lib/hooks';
 import { selectMedkit } from '../../model/medkit.slice';
 import { deleteMedkitThunk } from '../../model/medkit.thunk';
 import type { MedkitType } from '../../model/types';
-import ModalUpdate from '../ModalUpdate/ModalUpdate';
 import styles from './MedkitCard.module.css';
+import { useNavigate } from 'react-router-dom';
 
 type MedkitCardProps = {
   medkit: MedkitType;
@@ -16,9 +16,15 @@ type MedkitCardProps = {
 
 export default function MedkitCard({ medkit }: MedkitCardProps): React.JSX.Element {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const deleteHandler = (): void => {
-    void dispatch(deleteMedkitThunk(medkit.id));
+  const editHandler = (medkit: MedkitType): void => {
+    void dispatch(openModal(medkit));
+  };
+
+  const deleteHandler = (id: number): void => {
+    if (!id) return;
+    void dispatch(deleteMedkitThunk(id));
   };
 
   return (
@@ -35,10 +41,10 @@ export default function MedkitCard({ medkit }: MedkitCardProps): React.JSX.Eleme
             <IconButton color="error">
               <MedicalInformationTwoToneIcon />
             </IconButton>
-            <IconButton color="error" onClick={() => void dispatch(selectMedkit(medkit))}>
+            <IconButton color="error" onClick={editHandler}>
               <CreateIcon />
             </IconButton>
-            <IconButton color="error" onClick={deleteHandler}>
+            <IconButton color="error" onClick={() => deleteHandler(medkit.id)}>
               <DeleteForeverTwoToneIcon />
             </IconButton>
           </Box>

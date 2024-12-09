@@ -6,6 +6,7 @@ export type MedicineFormDataType = z.infer<typeof medicineFormSchema>;
 export type SortableKeysType = 'name' | 'code' | 'createdAt';
 export type MedicineSliceType = {
   items: MedicineType[];
+  medkitList: MedicineType
   error: string | null;
   sort: {
     key: SortableKeysType;

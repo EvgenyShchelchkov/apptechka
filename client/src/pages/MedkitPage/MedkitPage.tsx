@@ -1,3 +1,7 @@
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
+import { fetchMedkits } from '../../entities/medkit/model/medkit.thunk';
+import { Box, Typography, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react';
@@ -16,17 +20,24 @@ export default function MedkitPage(): React.JSX.Element {
   };
 
   return (
-    <Box className={styles.pageContainer}>
-      <Typography variant="h4" className={styles.title}>
+    <Box sx={{ padding: 2, position: 'relative' }}>
+      <Typography variant="h4" gutterBottom>
         My Medkits
       </Typography>
-      <Box className={styles.cardContainer}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 2,
+          justifyContent: 'space-around',
+        }}
+      >
         {medkits.map((medkit) => (
           <MedkitCard key={medkit.id} medkit={medkit} />
         ))}
       </Box>
 
-      <IconButton onClick={openCreateFormModal} className={styles.button}>
+      <IconButton onClick={openAddFormHandler} className={styles.addButton}>
         <AddCircleIcon fontSize="inherit" />
       </IconButton>
 

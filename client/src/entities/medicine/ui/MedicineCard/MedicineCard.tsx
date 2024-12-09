@@ -6,14 +6,14 @@ import MedicalInformationTwoToneIcon from '@mui/icons-material/MedicalInformatio
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import { useAppDispatch } from '../../../../shared/lib/hooks';
 
-import ModalUpdate from '../ModalUpdate/ModalUpdate';
+// import ModalUpdate from '../ModalUpdate/ModalUpdate';
 import { deleteMedicineThunk } from '../../model/medicine.thunks';
 
-type MedicineCardProps = {
-  medicine: MedicineType;
-};
+// type MedicineCardProps = {
+//   medicine.Medicine: MedicineType;
+// };
 
-export default function MedicineCard({ medicine }: MedicineCardProps): React.JSX.Element {
+export default function MedicineCard({ medicineInstances }): React.JSX.Element {
   const dispatch = useAppDispatch();
 
   const deleteHandler = (id: number | undefined): void => {
@@ -35,7 +35,7 @@ export default function MedicineCard({ medicine }: MedicineCardProps): React.JSX
           <CardMedia
             component="img"
             height="140"
-            image={medicine.img}
+            image={medicineInstances.img}
             sx={{
               objectFit: 'cover',
               width: '100%',
@@ -44,10 +44,10 @@ export default function MedicineCard({ medicine }: MedicineCardProps): React.JSX
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {medicine.name}
+              {medicineInstances.name}
             </Typography>
             <Typography gutterBottom variant="h5" component="div">
-              {medicine.category}
+              {medicineInstances.category}
             </Typography>
           </CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }}>
@@ -57,13 +57,13 @@ export default function MedicineCard({ medicine }: MedicineCardProps): React.JSX
             <IconButton color="error">
               <CreateIcon />
             </IconButton>
-            <IconButton color="error" onClick={() => deleteHandler(medicine.id)}>
+            <IconButton color="error" onClick={() => deleteHandler(medicineInstances.id)}>
               <DeleteForeverTwoToneIcon />
             </IconButton>
           </Box>
         </Card>
       </Box>
-      <ModalUpdate />
+      {/* <ModalUpdate /> */}
     </>
   );
 }

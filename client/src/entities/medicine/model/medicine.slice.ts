@@ -11,6 +11,7 @@ import type { MedicineSliceType, MedicineType, SortableKeysType } from './types'
 
 const initialState: MedicineSliceType = {
   items: [],
+  itemMedkit: ['id'],
   error: null,
   sort: {
     key: 'createdAt',
@@ -47,6 +48,7 @@ export const medicineSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchMedicines.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.items = action.payload;
         state.isLoading = false;
       })

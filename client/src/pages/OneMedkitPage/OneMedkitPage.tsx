@@ -1,16 +1,24 @@
-import React, { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
-import { fetchOneMedkit } from '../../entities/medkit/model/medkit.thunk';
+import React, { useEffect } from 'react';
+// import { useAppSelector } from '../../shared/lib/hooks';
+
 import { Box, IconButton, Typography } from '@mui/material';
 import MedicineCard from '../../entities/medicine/ui/MedicineCard/MedicineCard';
+import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
+import { fetchOneMedkit } from '../../entities/medkit/model/medkit.thunk';
+import { useParams } from 'react-router-dom';
 
 export default function OneMedkitPage(): React.JSX.Element {
+  const dispatch = useAppDispatch();
 
-    const dispatch = useAppDispatch();
-    const oneMedkids = useAppSelector((state) => state.medicine.items);
-    useEffect(() => {
-        void dispatch(fetchOneMedkit(id: number));
-      }, [dispatch]);
+  const { id } = useParams();
+
+  
+  const oneMedkits = useAppSelector((state) => state.medkit.selected);
+  console.log(oneMedkits);
+
+  useEffect(() => {
+    void dispatch(fetchOneMedkit(id));
+  }, [dispatch, id]);
   return (
     <Box sx={{ padding: 2, position: 'relative' }}>
       <Typography variant="h4" gutterBottom>
@@ -24,9 +32,9 @@ export default function OneMedkitPage(): React.JSX.Element {
           justifyContent: 'space-around',
         }}
       >
-        {oneMedkids.map((medicine) => (
-          <MedicineCard key={medicine.id} medicine={medicine} />
-        ))}
+       {oneMedkits && oneMedkits.MedicineInstances?.map((el) => (
+    <MedicineCard key={el.id} medicineInstances={el.Medicine} />
+))}
       </Box>
 
       {/* Кнопка добавления */}
@@ -45,5 +53,5 @@ export default function OneMedkitPage(): React.JSX.Element {
 
       {/* <ModalAdd /> */}
     </Box>
-  )
+  );
 }
