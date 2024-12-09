@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
-import { loadAllMedkits } from '../../entities/medkit/model/medkit.thunk';
+import { fetchMedkits } from '../../entities/medkit/model/medkit.thunk';
 import { Box, Typography, IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { openAddModal } from '../../entities/medkit/model/medkitSlice';
@@ -12,7 +12,7 @@ export default function MedkitPage(): React.JSX.Element {
   const medkits = useAppSelector((state) => state.medkit.list);
 
   useEffect(() => {
-    void dispatch(loadAllMedkits());
+    void dispatch(fetchMedkits());
   }, [dispatch]);
 
   const openAddHandler = (): void => {
