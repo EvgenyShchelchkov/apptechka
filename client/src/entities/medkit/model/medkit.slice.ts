@@ -30,6 +30,7 @@ export const medkitSlice = createSlice({
     },
     openModal: (state) => {
       state.showModal = true;
+      // state = action.payload;
     },
     closeModal: (state) => {
       state.showModal = false;
@@ -97,6 +98,6 @@ export const medkitSlice = createSlice({
   },
 });
 
-export const { setError, clearError, selectMedkit } = medkitSlice.actions;
+export const { setError, clearError, openModal, closeModal, selectMedkit } = medkitSlice.actions;
 
 export default medkitSlice.reducer;

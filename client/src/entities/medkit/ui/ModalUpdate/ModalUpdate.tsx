@@ -1,54 +1,39 @@
+import CloseIcon from '@mui/icons-material/Close';
+import { Box, Button, IconButton, Modal, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
-import { updateMedkit } from '../../model/medkit.thunk';
-import { closeEditModal } from '../../model/medkitSlice';
-import { Modal, Box, Typography, IconButton, TextField, Button } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { closeModal } from '../../model/medkit.slice';
+import { updateMedkitThunk } from '../../model/medkit.thunk';
+import styles from './ModalUpdate.module.css';
 
 export default function ModalUpdate(): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const showEditModal = useAppSelector((state) => state.medkit.showEditModal);
-  const medkit = useAppSelector((state) => state.medkit.editMedkit);
-
-  console.log('showEditModal:', showEditModal);
-  console.log('medkit in ModalUpdate:', medkit);
+  const showModal = useAppSelector((state) => state.medkit.showModal);
+  const medkit = useAppSelector((state) => state.medkit.selected);
 
   const closeHandler = (): void => {
-    void dispatch(closeEditModal());
+    void dispatch(closeModal());
   };
 
-  const submitHandler: React.FormEventHandler<HTMLFormElement> = (event): void => {
-    if (!medkit) return;
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    console.log('Редактируемая аптечка перед отправкой:', medkit);
-    void dispatch(updateMedkit({ id: medkit.id, formData }));
+  const submitHandler: React.FormEventHandler<HTMLFormElement> = (e): void => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    void dispatch(updateMedkitThunk({ id: medkit.id, formData }));
     closeHandler();
   };
 
   return (
-    <Modal open={showEditModal} onClose={closeHandler} aria-labelledby="edit-modal-title">
-      <Box
-        sx={{
-          padding: 2,
-          backgroundColor: '#fff',
-          borderRadius: '8px',
-          width: '400px',
-          margin: 'auto',
-          mt: '10%',
-        }}
-      >
-        {/* Заголовок и кнопка закрытия */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography id="edit-modal-title" variant="h6" sx={{ color: 'red' }}>
+    <Modal open={showModal} onClose={closeHandler} aria-labelledby="edit-modal-title">
+      <Box className={styles.modalBox}>
+        <Box className={styles.modalHeader}>
+          <Typography id="edit-modal-title" variant="h6" className={styles.modalTitle}>
             Изменить аптечку
           </Typography>
-          <IconButton onClick={closeHandler} aria-label="close" sx={{ color: 'red' }}>
+          <IconButton onClick={closeHandler} aria-label="close" className={styles.closeButton}>
             <CloseIcon />
           </IconButton>
         </Box>
 
-        {/* Форма */}
         <form onSubmit={submitHandler}>
           <TextField
             fullWidth
@@ -57,11 +42,8 @@ export default function ModalUpdate(): React.JSX.Element {
             variant="outlined"
             margin="normal"
             required
-            defaultValue={medkit?.name} // Подставляем значение для редактируемого медкита
-            sx={{
-              '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'red' } },
-              '& .MuiInputLabel-root': { color: 'red' },
-            }}
+            defaultValue={medkit?.name}
+            className={styles.textField}
           />
           <TextField
             fullWidth
@@ -69,25 +51,10 @@ export default function ModalUpdate(): React.JSX.Element {
             label="URL изображения"
             variant="outlined"
             margin="normal"
-            defaultValue={medkit?.img} // Подставляем значение для редактируемого медкита
-            sx={{
-              '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'red' } },
-              '& .MuiInputLabel-root': { color: 'red' },
-            }}
+            defaultValue={medkit?.img}
+            className={styles.textField}
           />
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{
-              mt: 2,
-              color: '#fff',
-              backgroundColor: 'red',
-              textTransform: 'none',
-              padding: '6px 16px', // Стандартный отступ
-              minWidth: 'auto', // Размер под текст
-              '&:hover': { backgroundColor: 'darkred' },
-            }}
-          >
+          <Button type="submit" variant="contained" className={styles.updateButton}>
             Обновить
           </Button>
         </form>

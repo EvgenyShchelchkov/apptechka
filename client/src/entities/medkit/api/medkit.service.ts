@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios';
 import axiosInstance from '../../../shared/api/axiosInstance';
-import { medkitSchema } from '../model/medkit.schema';
+import { medkitFormSchema, medkitSchema } from '../model/medkit.schema';
 import type { MedkitFormDataType, MedkitType } from '../model/types';
 
 class MedkitService {
@@ -30,10 +30,10 @@ class MedkitService {
     }
   }
 
-  async createMedkit(formData: MedkitFormDataType): Promise<MedkitType> {
+  async createMedkit(formData: MedkitFormDataType): Promise<MedkitFormDataType> {
     try {
       const response = await this.client.post('/medkits', formData);
-      return medkitSchema.parse(response.data);
+      return medkitFormSchema.parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -41,10 +41,13 @@ class MedkitService {
     }
   }
 
-  async updateMedkit(id: MedkitType['id'], formData: MedkitFormDataType): Promise<MedkitType> {
+  async updateMedkit(
+    id: MedkitType['id'],
+    formData: MedkitFormDataType,
+  ): Promise<MedkitFormDataType> {
     try {
       const response = await this.client.put(`/medkits/${id.toString()}`, formData);
-      return medkitSchema.parse(response.data);
+      return medkitFormSchema.parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
