@@ -5,12 +5,12 @@ const medkitRouter = require('express').Router();
 
 medkitRouter
   .route('/')
-  .get(verifyAccessToken, medkitController.getAllMedkits)
-  .post(medkitController.createMedkit);
+  .get(medkitController.getAllMedkits)
+  .post(verifyAccessToken, medkitController.createMedkit);
 
 medkitRouter
   .route('/:id')
-  .get(verifyAccessToken, medkitController.getOneMedkit)
+  .get(medkitController.getOneMedkit)
   .delete(verifyAccessToken, medkitController.deleteMedkit)
   .put(verifyAccessToken, medkitController.updateMedkit);
 
