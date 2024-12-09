@@ -1,0 +1,47 @@
+.modalBox {
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 400px;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  color: red;
+}
+
+.closeButton {
+  color: red;
+}
+
+.textField {
+  width: 100%;
+}
+
+.textFieldOutlined {
+  border-color: red;
+}
+
+.textFieldLabel {
+  color: red;
+}
+
+.updateButton {
+  margin-top: 16px;
+  color: #fff;
+  background-color: red;
+  text-transform: none;
+  padding: 6px 16px;
+  min-width: auto;
+}
+
+.updateButton:hover {
+  background-color: darkred;
+}

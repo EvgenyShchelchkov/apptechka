@@ -47,8 +47,8 @@ export default function NavBar(): React.JSX.Element {
             </Box>
 
             <Box className={styles.navigationSection}>
-              <NavLink to="/medkits" className={styles.navLink}>
-                Med kit
+              <NavLink to="/medkit" className={styles.navLink}>
+                Medkits
               </NavLink>
               <NavLink to="/medicine" className={styles.navLink}>
                 Medicines

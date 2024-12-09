@@ -1,61 +1,46 @@
-import React from 'react';
-import type { MedkitT } from '../../model/types';
-import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
-import MedicalInformationTwoToneIcon from '@mui/icons-material/MedicalInformationTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import MedicalInformationTwoToneIcon from '@mui/icons-material/MedicalInformationTwoTone';
+import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import React from 'react';
 import { useAppDispatch } from '../../../../shared/lib/hooks';
-import { openEditModal } from '../../model/medkitSlice';
+import { openModal } from '../../model/medkit.slice';
+import { deleteMedkitThunk } from '../../model/medkit.thunk';
+import type { MedkitType } from '../../model/types';
 import ModalUpdate from '../ModalUpdate/ModalUpdate';
-import { deleteMedkit } from '../../model/medkit.thunk';
+import styles from './MedkitCard.module.css';
 
 type MedkitCardProps = {
-  medkit: MedkitT;
+  medkit: MedkitType;
 };
 
 export default function MedkitCard({ medkit }: MedkitCardProps): React.JSX.Element {
   const dispatch = useAppDispatch();
 
-  const handleEditClick = (): void => {
-    void dispatch(openEditModal(medkit));
+  const editHandler = (medkit: MedkitType): void => {
+    void dispatch(openModal(medkit));
   };
 
-  const deleteHandler = (id: number | undefined): void => {
+  const deleteHandler = (id: number): void => {
     if (!id) return;
-    void dispatch(deleteMedkit(id));
+    void dispatch(deleteMedkitThunk(id));
   };
 
   return (
     <>
-      <Box sx={{ padding: 2 }}>
-        <Card
-          sx={{
-            width: 300,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <CardMedia
-            component="img"
-            height="140"
-            image={medkit.img}
-            sx={{
-              objectFit: 'cover',
-              width: '100%',
-              maxHeight: 140,
-            }}
-          />
+      <Box className={styles.container}>
+        <Card className={styles.card}>
+          <CardMedia component="img" height="140" image={medkit.img} className={styles.cardMedia} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {medkit.name}
             </Typography>
           </CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }}>
+          <Box className={styles.iconContainer}>
             <IconButton color="error">
               <MedicalInformationTwoToneIcon />
             </IconButton>
-            <IconButton color="error" onClick={handleEditClick}>
+            <IconButton color="error" onClick={editHandler}>
               <CreateIcon />
             </IconButton>
             <IconButton color="error" onClick={() => deleteHandler(medkit.id)}>
