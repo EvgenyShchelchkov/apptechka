@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
 import { fetchOneMedkit } from '../../entities/medkit/model/medkit.thunk';
 import { Box, IconButton, Typography } from '@mui/material';
 import MedicineCard from '../../entities/medicine/ui/MedicineCard/MedicineCard';
 
 export default function OneMedkitPage(): React.JSX.Element {
-
-    const dispatch = useAppDispatch();
-    const oneMedkids = useAppSelector((state) => state.medicine.items);
-    useEffect(() => {
-        void dispatch(fetchOneMedkit(id: number));
-      }, [dispatch]);
+  const dispatch = useAppDispatch();
+  const oneMedkids = useAppSelector((state) => state.medicine.items);
   return (
     <Box sx={{ padding: 2, position: 'relative' }}>
       <Typography variant="h4" gutterBottom>
@@ -45,5 +41,5 @@ export default function OneMedkitPage(): React.JSX.Element {
 
       {/* <ModalAdd /> */}
     </Box>
-  )
+  );
 }
