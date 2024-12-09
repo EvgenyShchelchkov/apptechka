@@ -7,6 +7,8 @@ export const fetchMedicines = createAsyncThunk('medicine/fetchMedicines', () =>
   medicineService.getAllMedicines(),
 );
 
+
+
 export const createMedicineThunk = createAsyncThunk(
   'medicine/createMedicine',
   (formData: FormData) => {

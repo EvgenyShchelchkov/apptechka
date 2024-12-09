@@ -19,6 +19,17 @@ class MedicineService {
     }
   }
 
+  async getAllMedicines(): Promise<MedicineType[]> {
+    try {
+      const response = await this.client.get('/medicines/medkits/${}');
+      return medicineSchema.array().parse(response.data);
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) return Promise.reject(error);
+      return Promise.reject(new Error('Что-то пошло не так'));
+    }
+  }
+
   async createMedicine(formData: MedicineFormDataType): Promise<MedicineType> {
     try {
       const response = await this.client.post('/medicines', formData);

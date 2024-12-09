@@ -11,6 +11,8 @@ export const fetchOneMedkit = createAsyncThunk('medkit/fetchOneMedkit', (id: num
   medkitService.getOneMedkit(id),
 );
 
+
+
 export const createMedkitThunk = createAsyncThunk('medkit/createMedkit', (formData: FormData) => {
   const data = Object.fromEntries(formData);
   const parsedData = medkitFormSchema.parse(data);
