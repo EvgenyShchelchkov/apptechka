@@ -1,17 +1,17 @@
 import type { AxiosInstance } from 'axios';
 import axiosInstance from '../../../shared/api/axiosInstance';
-import { likeSchema } from '../model/like.schema';
-import type { LikeFormDataType, LikeType } from '../model/types';
+import { favoriteSchema } from '../model/favorites.schema';
+import type { FavoriteFormDataType, FavoriteType } from '../model/types';
 
-class LikeService {
+class FavoriteService {
   constructor(private readonly client: AxiosInstance) {
     this.client = client;
   }
 
-  async getAll(): Promise<LikeType[]> {
+  async getAll(): Promise<FavoriteType[]> {
     try {
-      const response = await this.client.get('/likes');
-      return likeSchema.array().parse(response.data);
+      const response = await this.client.get('/favorites');
+      return favoriteSchema.array().parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -19,10 +19,10 @@ class LikeService {
     }
   }
 
-  async createOne(formData: LikeFormDataType): Promise<LikeType> {
+  async createOne(formData: FavoriteFormDataType): Promise<FavoriteType> {
     try {
-      const response = await this.client.post(`/likes`, formData);
-      return likeSchema.parse(response.data);
+      const response = await this.client.post(`/favorites`, formData);
+      return favoriteSchema.parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -32,8 +32,7 @@ class LikeService {
 
   async deleteOne(id: number): Promise<void> {
     try {
-      console.log(id);
-      await this.client.delete(`/likes/${id.toString()}`);
+      await this.client.delete(`/favorites/${id.toString()}`);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -42,4 +41,4 @@ class LikeService {
   }
 }
 
-export default new LikeService(axiosInstance);
+export default new FavoriteService(axiosInstance);

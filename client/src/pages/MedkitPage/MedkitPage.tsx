@@ -3,7 +3,8 @@ import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react';
 import { openCreateModal } from '../../entities/medkit/model/medkit.slice';
 import MedkitCard from '../../entities/medkit/ui/MedkitCard/MedkitCard';
-import ModalCreate from '../../entities/medkit/ui/ModalAdd/ModalCreate';
+import ModalCreate from '../../entities/medkit/ui/ModalCreate/ModalCreate';
+import ModalUpdate from '../../entities/medkit/ui/ModalUpdate';
 import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
 import styles from './MedkitPage.module.css';
 
@@ -16,21 +17,24 @@ export default function MedkitPage(): React.JSX.Element {
   };
 
   return (
-    <Box className={styles.pageContainer}>
-      <Typography variant="h4" className={styles.title}>
-        My Medkits
-      </Typography>
-      <Box className={styles.cardContainer}>
-        {medkits.map((medkit) => (
-          <MedkitCard key={medkit.id} medkit={medkit} />
-        ))}
+    <>
+      <Box className={styles.pageContainer}>
+        <Typography variant="h4" className={styles.title}>
+          My Medkits
+        </Typography>
+        <Box className={styles.cardContainer}>
+          {medkits.map((medkit) => (
+            <div className={styles.medkitCard} key={medkit.id}>
+              <MedkitCard medkit={medkit} />
+            </div>
+          ))}
+        </Box>
+        <IconButton onClick={openCreateFormModal} className={styles.button}>
+          <AddCircleIcon fontSize="inherit" />
+        </IconButton>
       </Box>
-
-      <IconButton onClick={openCreateFormModal} className={styles.button}>
-        <AddCircleIcon fontSize="inherit" />
-      </IconButton>
-
       <ModalCreate />
-    </Box>
+      <ModalUpdate />
+    </>
   );
 }

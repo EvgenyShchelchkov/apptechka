@@ -46,7 +46,7 @@
   justify-content: center;
 }
 
-.updateButton {
+.createButton {
   margin-top: 16px !important;
   color: #fff !important;
   background-color: rgb(185, 20, 30) !important;
@@ -56,7 +56,7 @@
   transition: background-color 0.3s ease !important;
 }
 
-.updateButton:hover {
+.createButton:hover {
   background-color: rgb(140, 15, 20) !important;
 }
 

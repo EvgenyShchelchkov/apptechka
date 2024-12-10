@@ -1,5 +1,5 @@
 import type { RouteObject } from 'react-router-dom';
-import { fetchAllLikes } from '../../../entities/like/model/like.thunks.js';
+import { fetchFavorites } from '../../../entities/favorite/model/favorites.thunks.js';
 import { fetchMedicines } from '../../../entities/medicine/model/medicine.thunks.js';
 import { fetchMedkits } from '../../../entities/medkit/model/medkit.thunk.js';
 import { refreshThunk } from '../../../entities/user/model/authThunks.js';
@@ -7,12 +7,12 @@ import ErrorPage from '../../../pages/ErrorPage/ErrorPage.js';
 import FavoritePage from '../../../pages/FavoritePage/FavoritePage.js';
 import MainPage from '../../../pages/MainPage/MainPage.js';
 import MedkitPage from '../../../pages/MedkitPage/MedkitPage.js';
+import OneMedkitPage from '../../../pages/OneMedkitPage/OneMedkitPage.js';
 import SignInPage from '../../../pages/SignInPage/SignInPage.js';
 import SignUpPage from '../../../pages/SignUpPage/SignUpPage.js';
 import { useAppDispatch, useAppSelector } from '../../../shared/lib/hooks.js';
 import Layout from '../../layout/Layout.js';
 import ProtectedRouter from '../feature/ProtectedRouter/ProtectedRouter.js';
-import OneMedkitPage from '../../../pages/OneMedkitPage/OneMedkitPage.js';
 
 export default function useAppRoutes(): RouteObject[] {
   const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ export default function useAppRoutes(): RouteObject[] {
       loader: () =>
         Promise.all([
           dispatch(refreshThunk()),
-          dispatch(fetchAllLikes()),
+          dispatch(fetchFavorites()),
           dispatch(fetchMedicines()),
           dispatch(fetchMedkits()),
         ]),
@@ -43,17 +43,13 @@ export default function useAppRoutes(): RouteObject[] {
               element: <MedkitPage />,
             },
             {
-              path: '/medkits/:id',
+              path: '/medkit/:id',
               element: <OneMedkitPage />,
             },
             {
               path: '/favorites',
               element: <FavoritePage />,
             },
-            // {
-            //   path: '/book/new',
-            //   element: <NewBookPage />,
-            // },
           ],
         },
         {

@@ -3,16 +3,24 @@
 }
 
 .card {
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 16px;
+  border: 1px solid rgb(185, 20, 30);
 }
 
 .cardMedia {
   object-fit: cover;
   width: 100%;
-  max-height: 140px;
+  height: 250px;
+}
+
+.cardTitle {
+  font-weight: bold;
+  text-align: center;
+  color: #000;
 }
 
 .iconContainer {

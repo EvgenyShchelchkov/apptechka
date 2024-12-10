@@ -75,6 +75,6 @@
 
 @media (max-width: 600px) {
   .container {
-    padding-top: 56px !important; /* Отступ для мобильных устройств */
+    padding-top: 56px !important;
   }
 }

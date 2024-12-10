@@ -16,14 +16,17 @@ module.exports = {
       {
         name: 'Для дома',
         user_id: 1,
+        img: 'img_medkits/first_kit.jpg',
       },
       {
         name: 'Для машины',
         user_id: 1,
+        img: 'img_medkits/first_kit.jpg',
       },
       {
         name: 'В путешествие',
         user_id: 1,
+        img: 'img_medkits/first_kit.jpg',
       },
     ]);
     await queryInterface.bulkInsert('Medicines', [

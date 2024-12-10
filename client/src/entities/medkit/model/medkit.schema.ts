@@ -14,9 +14,9 @@ export const medkitSchema = z.object({
   id: z.number(),
   name: z.string(),
   user_id: z.number(),
-  img: z.string().url(),
+  img: z.string(),
   createdAt: z.string().datetime(),
-  MedicineInstances: z.array(medicineInstanceSchema),
+  MedicineInstances: z.array(medicineInstanceSchema).optional(),
 });
 
 export const medkitFormSchema = medkitSchema.omit({

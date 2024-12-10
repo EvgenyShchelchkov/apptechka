@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import medkitService from '../api/medkit.service';
-import { medkitFormSchema, medkitSchema } from '../model/medkit.schema';
+import { medkitFormSchema } from '../model/medkit.schema';
 
 // First, create the thunk
 export const fetchMedkits = createAsyncThunk('medkit/fetchMedkits', () =>
@@ -10,8 +10,6 @@ export const fetchMedkits = createAsyncThunk('medkit/fetchMedkits', () =>
 export const fetchOneMedkit = createAsyncThunk('medkit/fetchOneMedkit', (id: number) =>
   medkitService.getOneMedkit(id),
 );
-
-
 
 export const createMedkitThunk = createAsyncThunk('medkit/createMedkit', (formData: FormData) => {
   const data = Object.fromEntries(formData);
@@ -23,7 +21,7 @@ export const updateMedkitThunk = createAsyncThunk(
   'medkit/updateMedkit',
   ({ id, formData }: { id: number; formData: FormData }) => {
     const data = Object.fromEntries(formData);
-    const parsedData = medkitSchema.parse(data);
+    const parsedData = medkitFormSchema.parse(data);
     return medkitService.updateMedkit(id, parsedData);
   },
 );

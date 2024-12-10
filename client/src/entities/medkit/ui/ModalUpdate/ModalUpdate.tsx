@@ -55,9 +55,11 @@ export default function ModalUpdate(): React.JSX.Element {
             defaultValue={medkit?.img}
             className={styles.textField}
           />
-          <Button type="submit" variant="contained" className={styles.updateButton}>
-            Обновить
-          </Button>
+          <Box className={styles.buttonContainer}>
+            <Button type="submit" variant="contained" className={styles.updateButton}>
+              Обновить
+            </Button>
+          </Box>
         </form>
       </Box>
     </Modal>

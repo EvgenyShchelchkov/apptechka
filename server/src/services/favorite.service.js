@@ -7,44 +7,33 @@ class FavoriteService {
     this.#db = db;
   }
 
-  async getFavorites() {
+  getAll() {
     return this.#db.Favorite.findAll({
       include: [
         {
-          model: this.#db.MedicineInstance,
-          include: [
-            {
-              model: this.#db.Medicine,
-            },
-            {
-              model: this.#db.MedKit,
-            },
-          ],
+          model: this.#db.User,
         },
       ],
+      order: [['updatedAt', 'DESC']],
     });
   }
 
-  async getOneMedicine(id) {
-    return this.#db.Favorite.findOne({
-      where: { id },
-      include: [
-        {
-          model: this.#db.MedicineInstance,
-          include: [
-            {
-              model: this.#db.Medicine,
-            },
-            {
-              model: this.#db.MedKit,
-            },
-          ],
-        },
-      ],
+  createOne({ user_id, medicine_instance_id }) {
+    if (!user_id || !medicine_instance_id) {
+      throw new Error('Не все обязательные поля заполнены');
+    }
+
+    return this.#db.Favorite.createOne({
+      user_id,
+      medicine_instance_id,
     });
   }
 
-  async deleteMedicine(id) {
+  deleteOne({ id }) {
+    if (!id) {
+      throw new Error('ID лекарства не указана');
+    }
+
     return this.#db.Favorite.destroy({
       where: { id },
     });

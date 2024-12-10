@@ -49,12 +49,14 @@ export default function ModalCreate(): React.JSX.Element {
             label="URL изображения"
             variant="outlined"
             margin="normal"
-            defaultValue="https://cdn-icons-png.flaticon.com/512/4710/4710113.png"
+            defaultValue="/medkit/first_kit.jpg"
             className={styles.textField}
           />
-          <Button type="submit" variant="contained" className={styles.createButton}>
-            Создать
-          </Button>
+          <Box className={styles.buttonContainer}>
+            <Button type="submit" variant="contained" className={styles.createButton}>
+              Создать
+            </Button>
+          </Box>
         </form>
       </Box>
     </Modal>

@@ -17,6 +17,7 @@ const initialState: MedkitSliceType = {
   showUpdateModal: false,
   isLoading: false,
   selected: null,
+  medkitList: null,
 };
 
 export const medkitSlice = createSlice({
@@ -62,7 +63,7 @@ export const medkitSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchOneMedkit.fulfilled, (state, action) => {
-        state.selected = action.payload;
+        state.medkitList = action.payload;
         state.isLoading = false;
       })
       .addCase(fetchOneMedkit.rejected, (state) => {

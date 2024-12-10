@@ -1,0 +1,24 @@
+.pageContainer {
+  padding: 16px;
+  position: relative;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-around;
+}
+
+.button {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  color: red;
+  font-size: 3rem;
+}

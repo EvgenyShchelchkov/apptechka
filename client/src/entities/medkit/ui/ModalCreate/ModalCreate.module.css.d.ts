@@ -4,6 +4,7 @@ declare const styles: {
   readonly modalTitle: string;
   readonly closeButton: string;
   readonly textField: string;
+  readonly buttonContainer: string;
   readonly createButton: string;
 };
 export = styles;

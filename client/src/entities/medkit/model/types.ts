@@ -10,4 +10,5 @@ export type MedkitSliceType = {
   showUpdateModal: boolean;
   isLoading: boolean;
   selected: MedkitType | null;
+  medkitList: MedkitType | null;
 };
