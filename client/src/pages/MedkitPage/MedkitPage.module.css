@@ -1,0 +1,61 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.pageContainer {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  background: linear-gradient(180deg, rgb(245, 245, 245), rgb(255, 240, 245)) !important;
+  padding: 32px !important;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-top: 100px !important;
+  margin-bottom: 24px !important;
+  color: #000 !important;
+}
+
+.cardContainer {
+  display: flex !important;
+  flex-wrap: wrap !important;
+
+  gap: 16px !important;
+  justify-content: center !important;
+}
+
+.medkitCard {
+  border-radius: 16px !important;
+  border: 1px solid rgb(185, 20, 30) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s !important;
+  overflow: hidden !important;
+}
+
+.medkitCard:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.button {
+  position: fixed !important;
+  bottom: 16px !important;
+  right: 16px !important;
+  color: #ffffff !important;
+  font-size: 3rem !important;
+  background-color: rgb(185, 20, 30) !important;
+  border-radius: 50% !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.button:hover {
+  background-color: rgb(140, 15, 20) !important;
+}
