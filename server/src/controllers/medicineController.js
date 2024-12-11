@@ -137,6 +137,25 @@ class MedicineController {
     }
   };
 
+  updateMedicineQuantity = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const updatedQuantity = await this.#service.updateMedicineQuantity(id);
+      res.status(200).json({
+        message: 'Количество уменьшено на 1',
+        data: updatedQuantity,
+      });
+    } catch (error) {
+      console.error('Ошибка при обновлении количества лекарства:', error);
+      const statusCode =
+        error.message === 'Лекарство закончилось' ||
+        error.message === 'Экземпляр лекарства не найден'
+          ? 400
+          : 500;
+      res.status(statusCode).json({ message: error.message || 'Ошибка сервера' });
+    }
+  };
+
   deleteMedicine = async (req, res) => {
     const { id } = req.params;
     try {

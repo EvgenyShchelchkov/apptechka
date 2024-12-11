@@ -35,6 +35,14 @@ export const updateMedicineThunk = createAsyncThunk(
   },
 );
 
+export const updateMedicineQuantity = createAsyncThunk(
+  'medicine/updateMedicineQuantity',
+  async (id: number) => {
+    const updatedMedicineCount = await medicineService.updateMedicineCount(id);
+    return updatedMedicineCount;
+  },
+);
+
 export const deleteMedicineThunk = createAsyncThunk(
   'medicine/deleteMedicine',
   async (id: number) => {

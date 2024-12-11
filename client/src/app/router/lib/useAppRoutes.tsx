@@ -14,6 +14,7 @@ import SignUpPage from '../../../pages/SignUpPage/SignUpPage.js';
 import { useAppDispatch, useAppSelector } from '../../../shared/lib/hooks.js';
 import Layout from '../../layout/Layout.js';
 import ProtectedRouter from '../feature/ProtectedRouter/ProtectedRouter.js';
+import MedicinePage from '../../../pages/MedicinePage/MedicinePage.js';
 
 export default function useAppRoutes(): RouteObject[] {
   const dispatch = useAppDispatch();
@@ -42,6 +43,10 @@ export default function useAppRoutes(): RouteObject[] {
             {
               path: '/medkit',
               element: <MedkitPage />,
+            },
+            {
+              path: '/medicine',
+              element: <MedicinePage />,
             },
             {
               path: '/medkit/:id',

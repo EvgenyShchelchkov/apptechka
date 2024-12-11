@@ -17,6 +17,7 @@ medicineRouter
 =======
   .put(verifyAccessToken, medicineController.updateMedicine)
 >>>>>>> FavoritePage
-  .delete(verifyAccessToken, medicineController.deleteMedicine);
+  .delete(verifyAccessToken, medicineController.deleteMedicine)
+  .patch(verifyAccessToken, medicineController.updateMedicineQuantity);
 
 module.exports = medicineRouter;

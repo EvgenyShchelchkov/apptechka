@@ -3,15 +3,9 @@ import CreateIcon from '@mui/icons-material/Create';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
-import { createFavoriteThunk, deleteFavoriteThunk } from '../../../favorite/model/favorites.thunks';
+import { useAppDispatch } from '../../../../shared/lib/hooks';
 import { deleteMedicineThunk } from '../../model/medicine.thunks';
 import type { MedicineInstanceType } from '../../model/types';
-<<<<<<< HEAD
-import { selectMedicine } from '../../model/medicine.slice';
-=======
-import styles from './MedicineCard.module.css';
->>>>>>> FavoritePage
 
 type MedicineCardProps = {
   medicineInstance: MedicineInstanceType;
@@ -27,6 +21,11 @@ export default function MedicineCard({ medicineInstance }: MedicineCardProps): R
   const deleteHandler = (id: number | undefined): void => {
     if (!id) return;
     void dispatch(deleteMedicineThunk(id));
+  };
+
+  const decreaseQuantityHandler = (id: number | undefined): void => {
+    if (!id) return;
+    void dispatch(updateMedicineQuantity(id));
   };
 
   const favoriteHandler = async (): Promise<void> => {
@@ -82,7 +81,6 @@ export default function MedicineCard({ medicineInstance }: MedicineCardProps): R
         </CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }}>
           <IconButton color="error">
-<<<<<<< HEAD
             <MedicalInformationTwoToneIcon />
           </IconButton>
           <IconButton color="error" onClick={() => void dispatch(selectMedicine(medicineInstance.Medicine))}>

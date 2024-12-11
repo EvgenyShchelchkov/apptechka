@@ -29,31 +29,30 @@ export default function OneMedkitPage(): React.JSX.Element {
 
   return (
     <>
-    <Box sx={{ padding: 2, position: 'relative' }}>
-      <Typography variant="h4" gutterBottom>
-        My Medicines
-      </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 2,
-          justifyContent: 'space-around',
-        }}
-      >
-        {oneMedkit?.MedicineInstances.map((el) => (
-          <MedicineCard key={el.id} medicineInstance={el} />
-        ))}
-      </Box>
+      <Box sx={{ padding: 2, position: 'relative' }}>
+        <Typography variant="h4" gutterBottom>
+          My Medicines
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 2,
+            justifyContent: 'space-around',
+          }}
+        >
+          {oneMedkit?.MedicineInstances?.map((el) => (
+            <MedicineCard key={el.id} medicineInstance={el} />
+          ))}
+        </Box>
 
-      {/* Кнопка добавления */}
-      <IconButton onClick={openCreateMedicineFormModal} className={styles.button}>
-        <AddCircleIcon fontSize="inherit" />
-      </IconButton>
-     
-    </Box>
-     {/* <ModalUpdateMedicine /> */}
-     <ModalCreateMedicine />
-     </>
+        {/* Кнопка добавления */}
+        <IconButton onClick={openCreateMedicineFormModal} className={styles.button}>
+          <AddCircleIcon fontSize="inherit" />
+        </IconButton>
+      </Box>
+      {/* <ModalUpdateMedicine /> */}
+      <ModalCreateMedicine />
+    </>
   );
 }
