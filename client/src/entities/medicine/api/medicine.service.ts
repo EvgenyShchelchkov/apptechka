@@ -1,7 +1,8 @@
 import type { AxiosInstance } from 'axios';
 import axiosInstance from '../../../shared/api/axiosInstance';
-import { medicineSchema } from '../model/medicine.schema';
-import type { MedicineFormDataType, MedicineType } from '../model/types';
+import { medicineSchema, allMedicinesSchema } from '../model/medicine.schema';
+import type { MedicineFormDataType, MedicineInstanceType, MedicineType } from '../model/types';
+import { medicineInstanceSchema } from '../../medkit/model/medkit.schema';
 
 class MedicineService {
   constructor(private readonly client: AxiosInstance) {
@@ -11,7 +12,7 @@ class MedicineService {
   async getAllMedicines(): Promise<MedicineType[]> {
     try {
       const response = await this.client.get('/medicines');
-      return medicineSchema.array().parse(response.data);
+      return allMedicinesSchema.array().parse(response.data);
     } catch (error) {
       console.error(error);
       if (error instanceof Error) return Promise.reject(error);
@@ -47,6 +48,18 @@ class MedicineService {
       return medicineSchema.parse(response.data);
     } catch (error) {
       console.error(error);
+      if (error instanceof Error) return Promise.reject(error);
+      return Promise.reject(new Error('Что-то пошло не так'));
+    }
+  }
+
+  async updateMedicineCount(id: number): Promise<MedicineInstanceType> {
+    try {
+      const response = await this.client.patch(`/medicines/${id.toString()}`);
+      const updatedMedicine = medicineInstanceSchema.parse(response.data.data);
+      return updatedMedicine;
+    } catch (error) {
+      console.error('Error updating medicine:', error);
       if (error instanceof Error) return Promise.reject(error);
       return Promise.reject(new Error('Что-то пошло не так'));
     }

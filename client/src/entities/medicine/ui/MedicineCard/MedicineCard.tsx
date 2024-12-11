@@ -4,8 +4,8 @@ import MedicalInformationTwoToneIcon from '@mui/icons-material/MedicalInformatio
 import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../../../../shared/lib/hooks';
-import { deleteMedicineThunk } from '../../model/medicine.thunks';
 import type { MedicineInstanceType } from '../../model/types';
+import { deleteMedicineThunk, updateMedicineQuantity } from '../../model/medicine.thunks';
 
 type MedicineCardProps = {
   medicineInstance: MedicineInstanceType;
@@ -17,6 +17,11 @@ export default function MedicineCard({ medicineInstance }: MedicineCardProps): R
   const deleteHandler = (id: number | undefined): void => {
     if (!id) return;
     void dispatch(deleteMedicineThunk(id));
+  };
+
+  const decreaseQuantityHandler = (id: number | undefined): void => {
+    if (!id) return;
+    void dispatch(updateMedicineQuantity(id));
   };
 
   return (
@@ -57,7 +62,7 @@ export default function MedicineCard({ medicineInstance }: MedicineCardProps): R
           </Typography>
         </CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'center', padding: '8px 0' }}>
-          <IconButton color="error">
+          <IconButton color="error" onClick={() => decreaseQuantityHandler(medicineInstance.id)}>
             <MedicalInformationTwoToneIcon />
           </IconButton>
           <IconButton color="error">

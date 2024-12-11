@@ -12,6 +12,7 @@ medicineRouter
   .route('/:id')
   .get(medicineController.getOneMedicine)
   .delete(verifyAccessToken, medicineController.updateMedicine)
-  .put(verifyAccessToken, medicineController.deleteMedicine);
+  .put(verifyAccessToken, medicineController.deleteMedicine)
+  .patch(verifyAccessToken, medicineController.updateMedicineQuantity);
 
 module.exports = medicineRouter;
