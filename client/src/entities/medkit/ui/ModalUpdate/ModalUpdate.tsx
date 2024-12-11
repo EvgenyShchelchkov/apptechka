@@ -28,7 +28,7 @@ export default function ModalUpdate(): React.JSX.Element {
       <Box className={styles.modalBox}>
         <Box className={styles.modalHeader}>
           <Typography id="edit-modal-title" variant="h6" className={styles.modalTitle}>
-            Изменить аптечку
+            Update a medical kit
           </Typography>
           <IconButton onClick={closeHandler} aria-label="close" className={styles.closeButton}>
             <CloseIcon />
@@ -39,13 +39,14 @@ export default function ModalUpdate(): React.JSX.Element {
           <TextField
             fullWidth
             name="name"
-            label="Название аптечки"
+            label="Name of the medical kit"
             variant="outlined"
             margin="normal"
             required
             defaultValue={medkit?.name}
             className={styles.textField}
           />
+<<<<<<< HEAD
           <FormControl sx={{ m: 1, minWidth: 150, marginLeft: 1 }}>
             <InputLabel id="demo-simple-select-autowidth-label">Цвет аптечки</InputLabel>
             <Select
@@ -60,9 +61,20 @@ export default function ModalUpdate(): React.JSX.Element {
               <MenuItem value="/medkit/third_kit.jpg">Зеленая</MenuItem>
             </Select>
           </FormControl>
+=======
+          <TextField
+            fullWidth
+            name="img"
+            label="URL of the image"
+            variant="outlined"
+            margin="normal"
+            defaultValue={medkit?.img}
+            className={styles.textField}
+          />
+>>>>>>> FavoritePage
           <Box className={styles.buttonContainer}>
             <Button type="submit" variant="contained" className={styles.updateButton}>
-              Обновить
+              Update
             </Button>
           </Box>
         </form>

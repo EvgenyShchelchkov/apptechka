@@ -8,6 +8,7 @@ const initialState: FavoriteSliceType = {
   items: [],
   error: null,
   selected: null,
+  isHovered: false,
 };
 
 export const favoriteSlice = createSlice({
@@ -22,6 +23,9 @@ export const favoriteSlice = createSlice({
     },
     selectLike: (state, action: PayloadAction<FavoriteType | null>) => {
       state.selected = action.payload;
+    },
+    setIsHovered: (state, action: PayloadAction<boolean>) => {
+      state.isHovered = action.payload;
     },
   },
 
@@ -50,6 +54,6 @@ export const favoriteSlice = createSlice({
   },
 });
 
-export const { setError, clearError, selectLike } = favoriteSlice.actions;
+export const { setError, clearError, selectLike, setIsHovered } = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;

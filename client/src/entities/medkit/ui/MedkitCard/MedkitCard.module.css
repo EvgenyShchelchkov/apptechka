@@ -1,30 +1,181 @@
+:root {
+  --primary-red: rgb(185, 20, 30);
+  --primary-red-hover: rgb(140, 15, 20);
+  --card-width: 280px;
+  --card-height: 380px;
+}
+
 .container {
   padding: 16px;
+  perspective: 1000px;
 }
 
 .card {
-  width: 250px;
+  width: var(--card-width);
+  height: var(--card-height);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 16px;
-  border: 1px solid rgb(185, 20, 30);
+  border-radius: 20px !important;
+  border: 1px solid rgba(185, 20, 30, 0.15);
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(185, 30, 30, 0.15),
+    0 0 20px rgba(255, 75, 75, 0.1),
+    0 0 40px rgba(185, 30, 30, 0.1) !important;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
 }
 
 .cardMedia {
+  width: 110%;
+  height: 100%;
   object-fit: cover;
-  width: 100%;
-  height: 250px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .cardMedia {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(185, 20, 30, 0.05) 50%,
+    rgba(185, 20, 30, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px !important;
+  position: relative;
+  z-index: 1;
 }
 
 .cardTitle {
-  font-weight: bold;
+  font-weight: 700 !important;
   text-align: center;
-  color: #000;
+  color: var(--primary-red) !important;
+  margin-bottom: 8px !important;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.cardTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.card:hover .cardTitle::after {
+  width: 60%;
 }
 
 .iconContainer {
   display: flex;
   justify-content: center;
-  padding: 8px 0;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(185, 20, 30, 0.1);
+}
+
+.iconButton {
+  color: var(--primary-red) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.iconButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(185, 20, 30, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
+}
+
+.iconButton:hover::before {
+  width: 120%;
+  height: 120%;
+}
+
+.iconButton:hover {
+  transform: translateY(-2px);
+  color: var(--primary-red-hover) !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --card-width: 260px;
+    --card-height: 360px;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --card-width: 100%;
+  }
 }

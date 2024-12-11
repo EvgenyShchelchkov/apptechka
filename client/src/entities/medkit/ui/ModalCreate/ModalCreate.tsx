@@ -38,7 +38,7 @@ export default function ModalCreate(): React.JSX.Element {
       <Box className={styles.modalBox}>
         <Box className={styles.modalHeader}>
           <Typography id="add-modal-title" variant="h6" className={styles.modalTitle}>
-            Добавить аптечку
+            Add a medical kit
           </Typography>
           <IconButton onClick={closeHandler} aria-label="close" className={styles.closeButton}>
             <CloseIcon />
@@ -49,12 +49,13 @@ export default function ModalCreate(): React.JSX.Element {
           <TextField
             fullWidth
             name="name"
-            label="Название аптечки"
+            label="Name of the medical kit"
             variant="outlined"
             margin="normal"
             required
             className={styles.textField}
           />
+<<<<<<< HEAD
 
           <FormControl sx={{ m: 1, minWidth: 150, marginLeft: 1 }}>
             <InputLabel id="demo-simple-select-autowidth-label">Цвет аптечки</InputLabel>
@@ -71,9 +72,20 @@ export default function ModalCreate(): React.JSX.Element {
             </Select>
           </FormControl>
 
+=======
+          <TextField
+            fullWidth
+            name="img"
+            label="URL of the image"
+            variant="outlined"
+            margin="normal"
+            defaultValue="/medkit/first_kit.jpg"
+            className={styles.textField}
+          />
+>>>>>>> FavoritePage
           <Box className={styles.buttonContainer}>
             <Button type="submit" variant="contained" className={styles.createButton}>
-              Создать
+              Create
             </Button>
           </Box>
         </form>

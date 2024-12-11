@@ -12,16 +12,21 @@ import ModalUpdateMedicine from '../../entities/medicine/ui/ModalUpdateMedicine'
 
 export default function OneMedkitPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
+
   const { id } = useParams();
   const oneMedkit = useAppSelector((state) => state.medkit.medkitList);
+<<<<<<< HEAD
 
   const openCreateMedicineFormModal = (): void => {
     void dispatch(openCreateMedicineModal());
   };
+=======
+>>>>>>> FavoritePage
 
   useEffect(() => {
     void dispatch(fetchOneMedkit(Number(id)));
   }, [dispatch, id]);
+
   return (
     <>
     <Box sx={{ padding: 2, position: 'relative' }}>

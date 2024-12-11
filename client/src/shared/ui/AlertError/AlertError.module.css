@@ -1,0 +1,32 @@
+.alert {
+  position: fixed !important;
+  top: 90px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2000 !important;
+  min-width: 565px !important;
+  max-width: 90% !important;
+  text-align: center !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  animation: slideDown 0.3s ease-out !important;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert {
+    min-width: unset !important;
+    width: 90% !important;
+    top: 80px !important;
+  }
+}

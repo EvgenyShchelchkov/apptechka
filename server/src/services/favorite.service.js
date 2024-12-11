@@ -13,6 +13,9 @@ class FavoriteService {
         {
           model: this.#db.User,
         },
+        {
+          model: this.#db.MedicineInstance,
+        },
       ],
       order: [['updatedAt', 'DESC']],
     });
@@ -23,7 +26,7 @@ class FavoriteService {
       throw new Error('Не все обязательные поля заполнены');
     }
 
-    return this.#db.Favorite.createOne({
+    return this.#db.Favorite.create({
       user_id,
       medicine_instance_id,
     });

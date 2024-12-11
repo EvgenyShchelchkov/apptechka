@@ -12,7 +12,7 @@ declare const styles: {
   readonly infoButtonExpanded: string;
   readonly starsButton: string;
   readonly updateButton: string;
-  readonly deleteButton: string;
+  readonly starsButton: string;
 };
 
 export = styles;

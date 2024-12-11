@@ -1,7 +1,7 @@
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import MedicalInformationTwoToneIcon from '@mui/icons-material/MedicalInformationTwoTone';
-import { Box, Card, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../../shared/lib/hooks';
@@ -25,27 +25,44 @@ export default function MedkitCard({ medkit }: MedkitCardProps): React.JSX.Eleme
   return (
     <Box className={styles.container}>
       <Card className={styles.card}>
-        <CardMedia
-          component="img"
-          image={medkit.img || '/path/to/default/image.jpg'}
-          alt={medkit.name}
-          className={styles.cardMedia}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div" className={styles.cardTitle}>
+        <Box className={styles.imageWrapper}>
+          <CardMedia
+            component="img"
+            image={medkit.img || '/path/to/default/image.jpg'}
+            alt={medkit.name}
+            className={styles.cardMedia}
+          />
+          <Box className={styles.overlay} />
+        </Box>
+
+        <CardContent className={styles.content}>
+          <Typography variant="h5" component="div" className={styles.cardTitle}>
             {medkit.name}
           </Typography>
         </CardContent>
+
         <Box className={styles.iconContainer}>
-          <IconButton color="error" onClick={() => navigate(`/medkit/${medkit.id.toString()}`)}>
-            <MedicalInformationTwoToneIcon />
-          </IconButton>
-          <IconButton color="error" onClick={() => void dispatch(selectMedkit(medkit))}>
-            <CreateIcon />
-          </IconButton>
-          <IconButton color="error" onClick={deleteHandler}>
-            <DeleteForeverTwoToneIcon />
-          </IconButton>
+          <Tooltip title="More" arrow>
+            <IconButton
+              className={styles.iconButton}
+              onClick={() => navigate(`/medkit/${medkit.id.toString()}`)}
+            >
+              <MedicalInformationTwoToneIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Update" arrow>
+            <IconButton
+              className={styles.iconButton}
+              onClick={() => void dispatch(selectMedkit(medkit))}
+            >
+              <CreateIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete" arrow>
+            <IconButton className={styles.iconButton} onClick={deleteHandler}>
+              <DeleteForeverTwoToneIcon />
+            </IconButton>
+          </Tooltip>
         </Box>
       </Card>
     </Box>

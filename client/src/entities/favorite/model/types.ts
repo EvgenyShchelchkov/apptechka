@@ -7,4 +7,5 @@ export type FavoriteSliceType = {
   items: FavoriteType[];
   error: string | null;
   selected: FavoriteType | null;
+  isHovered: boolean;
 };

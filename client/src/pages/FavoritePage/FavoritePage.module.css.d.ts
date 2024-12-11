@@ -1,9 +1,9 @@
 declare const styles: {
-  readonly container: string;
-  readonly paper: string;
+  readonly pageContainer: string;
   readonly title: string;
-  readonly subtitle: string;
-  readonly card: string;
-  readonly button: string;
+  readonly titleUnderline: string;
+  readonly cardContainer: string;
+  readonly favoriteCard: string;
+  readonly emptyState: string;
 };
 export = styles;

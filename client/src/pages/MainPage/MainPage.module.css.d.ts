@@ -1,9 +1,23 @@
 declare const styles: {
   readonly container: string;
-  readonly paper: string;
-  readonly title: string;
-  readonly subtitle: string;
-  readonly card: string;
+  readonly backgroundElements: string;
+  readonly circle1: string;
+  readonly circle2: string;
+  readonly circle3: string;
+  readonly circle4: string;
+  readonly circle5: string;
+  readonly welcomeCard: string;
+  readonly cardHeader: string;
+  readonly headerIcon: string;
+  readonly cardContent: string;
+  readonly greeting: string;
+  readonly cursor: string;
+  readonly divider: string;
+  readonly dividerLine: string;
+  readonly dividerIcon: string;
+  readonly welcomeText: string;
   readonly button: string;
+  readonly cardFooter: string;
+  readonly pulseEffect: string;
 };
 export = styles;

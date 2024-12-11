@@ -1,3 +1,3 @@
-import BookCard from './MedicineCard';
+import MedicineCard from './MedicineCard';
 
-export default BookCard;
+export default MedicineCard;

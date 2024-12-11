@@ -12,7 +12,11 @@ medicineRouter
   .route('/:id')
   .post(verifyAccessToken, upload.single('img'), medicineController.createMedicine)
   .get(medicineController.getOneMedicine)
+<<<<<<< HEAD
   .put(medicineController.updateMedicine)
+=======
+  .put(verifyAccessToken, medicineController.updateMedicine)
+>>>>>>> FavoritePage
   .delete(verifyAccessToken, medicineController.deleteMedicine);
 
 module.exports = medicineRouter;
