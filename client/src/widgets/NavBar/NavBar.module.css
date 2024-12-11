@@ -1,120 +1,240 @@
+:root {
+  --nav-height: 70px;
+  --primary-red: rgb(185, 20, 30);
+  --primary-red-light: rgb(255, 75, 75);
+  --primary-red-dark: rgb(140, 15, 20);
+}
+
 .container {
-  flex-grow: 1 !important;
+  height: var(--nav-height);
 }
 
 .appBar {
-  background-color: rgb(185 20 30) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 4px 20px rgba(185, 20, 30, 0.1) !important;
+  border-bottom: 1px solid rgba(185, 20, 30, 0.1) !important;
 }
 
 .toolbar {
-  width: 100% !important;
+  height: var(--nav-height);
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+  padding: 0 24px !important;
 }
 
 .logoSection {
-  flex: 1 !important;
-  display: flex !important;
-  align-items: center !important;
+  display: flex;
+  align-items: center;
 }
 
-.logoSection img {
-  width: 80px !important;
-  height: 80px !important;
-  margin-right: 10px !important;
-  vertical-align: middle !important;
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-red);
+  gap: 12px;
+  transition: transform 0.3s ease;
 }
 
-.logoSection .navLink {
-  display: flex !important;
-  align-items: center !important;
-  font-size: 1.25rem !important;
-  font-weight: 600 !important;
-  color: whitesmoke !important;
-  text-decoration: none !important;
+.logoLink:hover {
+  transform: translateY(-2px);
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.logoText {
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, var(--primary-red), var(--primary-red-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .navigationSection {
-  flex: 1 !important;
-  display: flex !important;
-  justify-content: center !important;
-  gap: 24px !important;
+  display: flex;
+  gap: 8px;
 }
 
 .navLink {
-  color: whitesmoke !important;
-  text-decoration: none !important;
-  white-space: nowrap !important;
-  font-size: 1rem !important;
-  font-weight: 500 !important;
-  transition: color 0.3s ease !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .navLink:hover {
-  color: rgb(50, 50, 50) !important;
+  color: var(--primary-red);
+  background: rgba(185, 20, 30, 0.05);
 }
 
-.accountSection {
-  flex: 1 !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
-  gap: 16px !important;
+.navLink.active {
+  color: var(--primary-red);
+  background: rgba(185, 20, 30, 0.1);
+}
+
+.navLinkFavorite {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.navLinkFavorite:hover {
+  color: #fbc02d;
+  background: rgba(251, 192, 45, 0.1);
+  transform: scale(1.05);
+}
+
+.navLinkFavorite.active {
+  color: #fbc02d;
+  background: rgba(251, 192, 45, 0.15);
+}
+
+.navLinkFavorite::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #fbc02d, #ffd54f);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navLinkFavorite:hover::after,
+.navLinkFavorite.active::after {
+  width: 80%;
+}
+
+.navLinkFavorite:hover .navIcon {
+  transform: scale(1.1);
+  color: #fbc02d;
+}
+
+.navLinkFavorite.active .navIcon {
+  color: #fbc02d;
+}
+
+.navIcon {
+  font-size: 24px !important;
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover .navIcon {
+  transform: scale(1.1);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-red), var(--primary-red-light));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 80%;
+}
+
+.authSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.authLink {
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--primary-red);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(185, 20, 30, 0.2);
+}
+
+.authLink:hover {
+  background: rgba(185, 20, 30, 0.1);
+  transform: translateY(-2px);
 }
 
 .userName {
-  color: whitesmoke !important;
-  font-size: 1rem !important;
-  white-space: nowrap !important;
+  color: var(--primary-red) !important;
+  font-weight: 500 !important;
+  padding: 8px 16px;
+  background: rgba(185, 20, 30, 0.1);
+  border-radius: 20px;
 }
 
-.separator {
-  color: whitesmoke !important;
-  margin: 0 16px !important;
-  user-select: none !important;
-}
-
-.desktopMenu {
-  display: flex !important;
-  align-items: center !important;
-  gap: 16px !important;
-}
-
-.mobileMenu {
-  display: none !important;
-  color: whitesmoke !important;
-}
-
-.buttonSupport {
-  border-radius: 28px !important;
-  padding: 10px 20px !important;
+.signOutButton {
+  color: var(--primary-red) !important;
+  border: 1px solid rgba(185, 20, 30, 0.2) !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
   text-transform: none !important;
-  font-size: 1.1rem !important;
-  background-color: whitesmoke !important;
-  color: rgb(185 20 30) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  font-weight: 500 !important;
   transition: all 0.3s ease !important;
 }
 
-.buttonSupport:hover {
-  background-color: goldenrod !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+.signOutButton:hover {
+  background: rgba(185, 20, 30, 0.1) !important;
+  transform: translateY(-2px);
 }
 
-@media (max-width: 900px) {
-  .desktopMenu {
-    display: none !important;
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navigationSection {
+    display: none;
   }
 
-  .mobileMenu {
-    display: flex !important;
+  .authSection {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 0 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoText {
+    display: none;
   }
 
-  .logoSection img {
-    width: 32px !important;
-    height: 32px !important;
+  .toolbar {
+    padding: 0 12px !important;
   }
 }

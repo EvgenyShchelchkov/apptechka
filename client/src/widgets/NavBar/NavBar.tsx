@@ -1,7 +1,9 @@
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import { AppBar, Box, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
+import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { signoutThunk } from '../../entities/user/model/authThunks';
 import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
@@ -11,141 +13,67 @@ export default function NavBar(): React.JSX.Element {
   const user = useAppSelector((state) => state.auth.user?.name);
   const dispatch = useAppDispatch();
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>): void =>
-    setAnchorEl(event.currentTarget);
-  const handleMobileMenuClose = (): void => setMobileMoreAnchorEl(null);
-  const handleMenuClose = (): void => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>): void =>
-    setMobileMoreAnchorEl(event.currentTarget);
-
-  const submitHandler: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
+  const handleSignOut = (): void => {
     void dispatch(signoutThunk());
   };
+
+  const navigationLinks = (
+    <>
+      <NavLink to="/medkit" className={styles.navLink}>
+        <MedicalServicesIcon className={styles.navIcon} />
+        <span>Medicine Kits</span>
+      </NavLink>
+      <NavLink to="/medicine" className={styles.navLink}>
+        <LocalPharmacyIcon className={styles.navIcon} />
+        <span>Medicines</span>
+      </NavLink>
+      <NavLink to="/favorite" className={styles.navLinkFavorite}>
+        <AutoAwesomeIcon className={styles.navIcon} />
+        <span>Favorites</span>
+      </NavLink>
+      <NavLink to="/drugstore" className={styles.navLink}>
+        <LocalHospitalIcon className={styles.navIcon} />
+        <span>Drugstores</span>
+      </NavLink>
+    </>
+  );
 
   return (
     <Box className={styles.container}>
       <AppBar position="fixed" className={styles.appBar}>
-        <Toolbar>
-          <Box className={styles.toolbar}>
-            <Box className={styles.logoSection}>
-              <NavLink to="/" className={styles.navLink}>
-                <img src="logo/logo.png" alt="logo" />
-                <Typography variant="h6" noWrap>
-                  AppTechka
-                </Typography>
-              </NavLink>
-            </Box>
+        <Toolbar className={styles.toolbar}>
+          <Box className={styles.logoSection}>
+            <NavLink to="/" className={styles.logoLink}>
+              <img src="logo/logo-vite.png" alt="logo" className={styles.logo} />
+              <Typography variant="h6" className={styles.logoText}>
+                AppTechka
+              </Typography>
+            </NavLink>
+          </Box>
 
-            <Box className={styles.navigationSection}>
-              <NavLink to="/medkit" className={styles.navLink}>
-                Medkits
-              </NavLink>
-              <NavLink to="/medicine" className={styles.navLink}>
-                Medicines
-              </NavLink>
-              <NavLink to="/favorite" className={styles.navLink}>
-                Favorites
-              </NavLink>
-              <NavLink to="/drugstore" className={styles.navLink}>
-                Drugstores
-              </NavLink>
-            </Box>
+          <Box className={styles.navigationSection}>{navigationLinks}</Box>
 
-            <Box className={styles.accountSection}>
-              <Box className={styles.desktopMenu}>
-                {!user ? (
-                  <>
-                    <NavLink to="/auth/signin" className={styles.navLink}>
-                      Sign In
-                    </NavLink>
-                    <NavLink to="/auth/signup" className={styles.navLink}>
-                      Sign Up
-                    </NavLink>
-                    <Typography className={styles.separator}>|</Typography>
-                  </>
-                ) : null}
-                <Typography className={styles.userName}>{user ?? 'Guest'}</Typography>
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account"
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="default"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Box>
-
-              <Box className={styles.mobileMenu}>
-                <IconButton
-                  size="large"
-                  aria-label="menu"
-                  aria-controls="primary-search-account-menu-mobile"
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
-                  color="default"
-                >
-                  <MoreIcon />
-                </IconButton>
-              </Box>
-            </Box>
+          <Box className={styles.authSection}>
+            {!user ? (
+              <>
+                <NavLink to="/auth/signin" className={styles.authLink}>
+                  Sign In
+                </NavLink>
+                <NavLink to="/auth/signup" className={styles.authLink}>
+                  Sign Up
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <Typography className={styles.userName}>{user}</Typography>
+                <Button onClick={handleSignOut} className={styles.signOutButton}>
+                  Sign Out
+                </Button>
+              </>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
-
-      <Menu
-        anchorEl={anchorEl}
-        id="primary-search-account-menu"
-        keepMounted
-        open={isMenuOpen}
-        onClose={handleMenuClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        {user && <MenuItem onClick={submitHandler}>Sign Out</MenuItem>}
-      </Menu>
-
-      <Menu
-        anchorEl={mobileMoreAnchorEl}
-        id="primary-search-account-menu-mobile"
-        keepMounted
-        open={isMobileMenuOpen}
-        onClose={handleMobileMenuClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      >
-        <MenuItem onClick={handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <Typography>Profile</Typography>
-        </MenuItem>
-      </Menu>
     </Box>
   );
 }

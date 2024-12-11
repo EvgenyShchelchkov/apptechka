@@ -1,0 +1,54 @@
+.card {
+  border-radius: 16px;
+  border: 1px solid rgba(185, 20, 30, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 250, 240, 0.9), rgba(245, 220, 200, 0.9));
+  position: relative;
+  padding: 16px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.cardMedia {
+  border-bottom: 1px solid rgba(185, 20, 30, 0.5);
+  border-radius: 8px;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-weight: bold;
+  font-family: 'Arial', sans-serif; /* Современный шрифт */
+  color: #4a4a4a; /* Темно-серый цвет */
+  text-align: center; /* Центрирование заголовка */
+}
+
+.cardDescription {
+  margin-top: 8px;
+  font-family: 'Arial', sans-serif; /* Современный шрифт */
+  color: #7a7a7a; /* Светло-серый цвет */
+  text-align: center; /* Центрирование описания */
+}
+
+/* Добавление эффекта фона */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/path/to/your/texture.png') no-repeat center center; /* Текстура фона */
+  opacity: 0.1; /* Полупрозрачность текстуры */
+  z-index: 0; /* Под карточкой */
+}

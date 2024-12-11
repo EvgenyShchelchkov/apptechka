@@ -20,7 +20,7 @@ export default function MedkitPage(): React.JSX.Element {
     <>
       <Box className={styles.pageContainer}>
         <Typography variant="h4" className={styles.title}>
-          My Medkits
+          My Medicine Kits
         </Typography>
         <Box className={styles.cardContainer}>
           {medkits.map((medkit) => (

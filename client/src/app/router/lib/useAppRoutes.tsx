@@ -47,7 +47,7 @@ export default function useAppRoutes(): RouteObject[] {
               element: <OneMedkitPage />,
             },
             {
-              path: '/favorites',
+              path: '/favorite',
               element: <FavoritePage />,
             },
           ],

@@ -8,4 +8,8 @@ export const favoriteSchema = z.object({
   User: userSchema.optional().nullable(),
 });
 
-export const favoriteFormSchema = favoriteSchema.omit({ id: true, user_id: true, User: true });
+export const favoriteFormSchema = favoriteSchema.omit({
+  id: true,
+  user_id: true,
+  User: true,
+});

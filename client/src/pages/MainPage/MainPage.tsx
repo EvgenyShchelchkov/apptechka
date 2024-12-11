@@ -1,3 +1,4 @@
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -10,7 +11,7 @@ export default function MainPage(): React.JSX.Element {
   const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
-    const message = `Halo, ${user ?? 'Гость'} 🖖`;
+    const message = `Hello, ${user ?? 'Гость'}!`;
     const timer = setInterval(() => {
       setGreeting((prev) => {
         if (prev.length < message.length) {
@@ -20,25 +21,51 @@ export default function MainPage(): React.JSX.Element {
         return prev;
       });
     }, 100);
-
     return () => clearInterval(timer);
   }, [user]);
 
   return (
     <Box className={styles.container}>
-      <Container maxWidth="lg">
-        <Paper className={styles.paper} elevation={3}>
-          <Typography variant="h3" component="h1" gutterBottom className={styles.title}>
-            {greeting}
-          </Typography>
-          <Typography variant="h6" gutterBottom className={styles.subtitle}>
-            Мы рады видеть вас здесь (ﾉ◕ヮ◕)ﾉ:･ﾟ✧
-          </Typography>
-          <NavLink to="/medkit" style={{ textDecoration: 'none' }}>
-            <Button className={styles.button} size="large" color="secondary">
-              Перейти к запасам!
-            </Button>
-          </NavLink>
+      <div className={styles.backgroundElements}>
+        <div className={styles.circle1} />
+        <div className={styles.circle2} />
+        <div className={styles.circle3} />
+      </div>
+
+      <Container maxWidth="md">
+        <Paper className={styles.welcomeCard} elevation={3}>
+          <div className={styles.cardHeader}>
+            <HealthAndSafetyIcon className={styles.headerIcon} />
+            <HealthAndSafetyIcon className={styles.headerIcon} />
+            <HealthAndSafetyIcon className={styles.headerIcon} />
+          </div>
+
+          <div className={styles.cardContent}>
+            <Typography variant="h3" className={styles.greeting}>
+              {greeting}
+              <span className={styles.cursor}>|</span>
+            </Typography>
+
+            <div className={styles.divider}>
+              <span className={styles.dividerLine} />
+              <HealthAndSafetyIcon className={styles.dividerIcon} />
+              <span className={styles.dividerLine} />
+            </div>
+
+            <Typography variant="h6" className={styles.welcomeText}>
+              Ваша персональная медицинская аптечка
+            </Typography>
+
+            <NavLink to="/medkit" style={{ textDecoration: 'none' }}>
+              <Button className={styles.button} size="large">
+                Перейти к запасам!
+              </Button>
+            </NavLink>
+          </div>
+
+          <div className={styles.cardFooter}>
+            <div className={styles.pulseEffect} />
+          </div>
         </Paper>
 
         <MedicineSequential />

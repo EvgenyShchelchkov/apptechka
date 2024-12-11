@@ -1,12 +1,12 @@
 declare const styles: {
-  readonly container: string;
   readonly card: string;
-  readonly imageWrapper: string;
   readonly cardMedia: string;
-  readonly overlay: string;
-  readonly content: string;
+  readonly cardContent: string;
   readonly cardTitle: string;
+  readonly cardDescription: string;
   readonly iconContainer: string;
-  readonly iconButton: string;
+  readonly deleteButton: string;
+  readonly favoriteButton: string;
 };
+
 export = styles;

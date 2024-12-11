@@ -28,7 +28,7 @@ export default function ModalUpdate(): React.JSX.Element {
       <Box className={styles.modalBox}>
         <Box className={styles.modalHeader}>
           <Typography id="edit-modal-title" variant="h6" className={styles.modalTitle}>
-            Изменить аптечку
+            Update a medical kit
           </Typography>
           <IconButton onClick={closeHandler} aria-label="close" className={styles.closeButton}>
             <CloseIcon />
@@ -39,7 +39,7 @@ export default function ModalUpdate(): React.JSX.Element {
           <TextField
             fullWidth
             name="name"
-            label="Название аптечки"
+            label="Name of the medical kit"
             variant="outlined"
             margin="normal"
             required
@@ -49,7 +49,7 @@ export default function ModalUpdate(): React.JSX.Element {
           <TextField
             fullWidth
             name="img"
-            label="URL изображения"
+            label="URL of the image"
             variant="outlined"
             margin="normal"
             defaultValue={medkit?.img}
@@ -57,7 +57,7 @@ export default function ModalUpdate(): React.JSX.Element {
           />
           <Box className={styles.buttonContainer}>
             <Button type="submit" variant="contained" className={styles.updateButton}>
-              Обновить
+              Update
             </Button>
           </Box>
         </form>
