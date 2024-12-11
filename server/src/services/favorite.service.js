@@ -13,6 +13,9 @@ class FavoriteService {
         {
           model: this.#db.User,
         },
+        {
+          model: this.#db.MedicineInstance,
+        },
       ],
       order: [['updatedAt', 'DESC']],
     });

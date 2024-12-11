@@ -30,6 +30,8 @@ export default function MainPage(): React.JSX.Element {
         <div className={styles.circle1} />
         <div className={styles.circle2} />
         <div className={styles.circle3} />
+        <div className={styles.circle4} />
+        <div className={styles.circle5} />
       </div>
 
       <Container maxWidth="md">

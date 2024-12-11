@@ -4,6 +4,8 @@ declare const styles: {
   readonly circle1: string;
   readonly circle2: string;
   readonly circle3: string;
+  readonly circle4: string;
+  readonly circle5: string;
   readonly welcomeCard: string;
   readonly cardHeader: string;
   readonly headerIcon: string;

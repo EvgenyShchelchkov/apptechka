@@ -48,7 +48,7 @@ body {
 .title {
   font-size: 2.5rem !important;
   font-weight: 800 !important;
-  margin-top: 80px !important;
+  margin-top: 20px !important;
   margin-bottom: var(--spacing-large) !important;
   color: var(--primary-red) !important;
   text-align: center !important;

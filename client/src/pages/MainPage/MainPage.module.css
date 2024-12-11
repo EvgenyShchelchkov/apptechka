@@ -24,7 +24,9 @@
 
 .circle1,
 .circle2,
-.circle3 {
+.circle3,
+.circle4,
+.circle5 {
   position: absolute;
   border-radius: 50%;
   background: linear-gradient(45deg, rgba(255, 75, 75, 0.1), rgba(185, 20, 30, 0.1));
@@ -52,6 +54,22 @@
   top: 40%;
   right: 10%;
   animation: float 7s infinite ease-in-out;
+}
+
+.circle4 {
+  width: 100px;
+  height: 100px;
+  top: 80%;
+  right: 15%;
+  animation: float 5s infinite ease-in-out;
+}
+
+.circle5 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  right: 90%;
+  animation: float 5s infinite ease-in-out;
 }
 
 .welcomeCard {
@@ -222,7 +240,6 @@
   }
 }
 
-/* Медиа-запросы */
 @media (max-width: 768px) {
   .container {
     padding-top: 60px;
