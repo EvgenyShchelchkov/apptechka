@@ -19,9 +19,10 @@ class MedicineService {
     }
   }
 
-  async createMedicine(formData: MedicineFormDataType): Promise<MedicineType> {
+  async createMedicine(formData: FormData, id: number): Promise<MedicineType> {
     try {
-      const response = await this.client.post('/medicines', formData);
+      console.log(formData);
+      const response = await this.client.post(`/medicines/${id.toString()}`, formData);
       return medicineSchema.parse(response.data);
     } catch (error) {
       console.error(error);

@@ -24,7 +24,7 @@ module.exports = {
       img: {
         type: Sequelize.TEXT,
         allowNull: false,
-        defaultValue: 'https://cdn-icons-png.flaticon.com/512/4710/4710113.png',
+        defaultValue: '/img_medkits/third_kit.jpg',
       },
       createdAt: {
         allowNull: false,

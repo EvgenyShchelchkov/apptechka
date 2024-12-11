@@ -2,16 +2,18 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  createMedicineThunk,
   deleteMedicineThunk,
-  fetchMedicines,
+  createMedicineThunk,
   updateMedicineThunk,
+  fetchMedicines,
 } from './medicine.thunks';
 import type { MedicineSliceType, MedicineType, SortableKeysType } from './types';
 
 const initialState: MedicineSliceType = {
   items: [],
   error: null,
+  showCreateMedicineModal: false,
+  showUpdateMedicineModal: false,
   sort: {
     key: 'createdAt',
     order: 'desc',
@@ -29,6 +31,19 @@ export const medicineSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+    },
+
+    openCreateMedicineModal: (state) => {
+      state.showCreateMedicineModal = true;
+    },
+    openUpdateMedicineModal: (state) => {
+      state.showUpdateMedicineModal = true;
+    },
+    closeCreateMedicineModal: (state) => {
+      state.showCreateMedicineModal = false;
+    },
+    closeUpdateMedicineModal: (state) => {
+      state.showUpdateMedicineModal = false;
     },
     setSortKey: (state, action: PayloadAction<SortableKeysType>) => {
       state.sort.key = action.payload;
@@ -52,6 +67,7 @@ export const medicineSlice = createSlice({
       })
       .addCase(fetchMedicines.rejected, (state) => {
         state.error = 'Ошибка получения данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(createMedicineThunk.pending, (state) => {
@@ -63,6 +79,7 @@ export const medicineSlice = createSlice({
       })
       .addCase(createMedicineThunk.rejected, (state) => {
         state.error = 'Ошибка добавления данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(updateMedicineThunk.pending, (state) => {
@@ -74,6 +91,7 @@ export const medicineSlice = createSlice({
       })
       .addCase(updateMedicineThunk.rejected, (state) => {
         state.error = 'Ошибка изменения данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(deleteMedicineThunk.pending, (state) => {
@@ -85,11 +103,12 @@ export const medicineSlice = createSlice({
       })
       .addCase(deleteMedicineThunk.rejected, (state) => {
         state.error = 'Ошибка удаления данных!';
+        state.isLoading = false;
       });
   },
 });
 
-export const { setError, clearError, setSortKey, reverseSortOrder, selectMedicine } =
+export const { setError, clearError, setSortKey, reverseSortOrder, selectMedicine, openUpdateMedicineModal, openCreateMedicineModal,closeCreateMedicineModal, closeUpdateMedicineModal } =
   medicineSlice.actions;
 
 export default medicineSlice.reducer;

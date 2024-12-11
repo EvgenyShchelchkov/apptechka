@@ -31,49 +31,99 @@ class MedicineController {
     }
   };
 
+  // createMedicine = async (req, res) => {
+  //   try {
+  //     const { med_kit_id, name, description, code, presciption, category, quantity, expiration } =
+  //       req.body;
+  //     const medKit = await medkitService.getOneMedkit(med_kit_id);
+  //     if (!medKit) {
+  //       return res.status(404).json({ message: 'Аптечка не найдена' });
+  //     }
+
+  //     if (!req.file) {
+  //       return res.status(400).json({ message: 'Файл не загружен' });
+  //     }
+
+  //     const nameFile = `${Date.now()}.webp`;
+  //     const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
+  //     await fs.writeFile(`../../public/img_medicines/${nameFile}`, outputBuffer);
+
+  //     const newMedicine = await this.#service.createMedicine({
+  //       name,
+  //       description,
+  //       code,
+  //       img: nameFile,
+  //       presciption,
+  //       category,
+  //       user_id: res.locals.user.id,
+  //     });
+
+  //     const medicineInstance = await this.#service.createMedicineInstance({
+  //       medicine_id: newMedicine.id,
+  //       med_kit_id,
+  //       quantity,
+  //       expiration,
+  //     });
+
+  //     res.status(201).json({
+  //       message: 'Лекарство добавлено в аптечку',
+  //       medicineInstance,
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(500).json({ message: 'Ошибка сервера' });
+  //   }
+  // };
+
   createMedicine = async (req, res) => {
     try {
-      const { med_kit_id, name, description, code, presciption, category, quantity, expiration } =
-        req.body;
-      const medKit = await medkitService.getOneMedkit(med_kit_id);
+      const medKitId = req.params.id
+      const {  name, description, code, presciption, category, quantity, expiration } = req.body;
+  
+      // Проверка на наличие med_kit_id
+      if (!medKitId) {
+        return res.status(400).json({ message: 'ID аптечки не указан' });
+      }
+  
+      const medKit = await medkitService.getOneMedkit(medKitId);
       if (!medKit) {
         return res.status(404).json({ message: 'Аптечка не найдена' });
       }
-
+  
       if (!req.file) {
         return res.status(400).json({ message: 'Файл не загружен' });
       }
-
+  
       const nameFile = `${Date.now()}.webp`;
       const outputBuffer = await sharp(req.file.buffer).webp().toBuffer();
-      await fs.writeFile(`./public/${nameFile}`, outputBuffer);
-
+      await fs.writeFile(`./public/img_medicines/${nameFile}`, outputBuffer);
+  
+      // Создание лекарства
       const newMedicine = await this.#service.createMedicine({
         name,
         description,
         code,
-        img: nameFile,
+        img: `/img_medicines/${nameFile}`,
         presciption,
         category,
         user_id: res.locals.user.id,
       });
-
+  
+      // Создание экземпляра лекарства в аптечке
       const medicineInstance = await this.#service.createMedicineInstance({
         medicine_id: newMedicine.id,
-        med_kit_id,
+        med_kit_id: medKitId,
         quantity,
         expiration,
       });
-
-      res.status(201).json({
-        message: 'Лекарство добавлено в аптечку',
-        medicineInstance,
-      });
+  
+      return res.status(201).json({ message: 'Лекарство успешно создано', medicineInstance });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Ошибка сервера' });
+      return res.status(500).json({ message: 'Ошибка при создании лекарства' });
     }
   };
+  
 
   updateMedicine = async (req, res) => {
     const { id } = req.params;

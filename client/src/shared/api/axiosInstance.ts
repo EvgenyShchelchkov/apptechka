@@ -11,6 +11,9 @@ export function injectStore(_store: AppStore): void {
 
 const axiosInstance = axios.create({
   baseURL: '/api',
+  // headers: {
+  //   'Content-Type': 'multipart/form-data',
+  // },
 });
 
 axiosInstance.interceptors.request.use((config) => {

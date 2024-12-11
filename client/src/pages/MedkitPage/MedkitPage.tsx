@@ -3,7 +3,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react';
 import { openCreateModal } from '../../entities/medkit/model/medkit.slice';
 import MedkitCard from '../../entities/medkit/ui/MedkitCard/MedkitCard';
-import ModalCreate from '../../entities/medkit/ui/ModalCreate/ModalCreate';
+import ModalCreate from '../../entities/medkit/ui/ModalCreate';
 import ModalUpdate from '../../entities/medkit/ui/ModalUpdate';
 import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
 import styles from './MedkitPage.module.css';
