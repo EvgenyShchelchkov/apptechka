@@ -3,6 +3,7 @@ import { fetchFavorites } from '../../../entities/favorite/model/favorites.thunk
 import { fetchMedicines } from '../../../entities/medicine/model/medicine.thunks.js';
 import { fetchMedkits } from '../../../entities/medkit/model/medkit.thunk.js';
 import { refreshThunk } from '../../../entities/user/model/authThunks.js';
+import DrugstorePage from '../../../pages/DrugstorePage/DrugstorePage.js';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage.js';
 import FavoritePage from '../../../pages/FavoritePage/FavoritePage.js';
 import MainPage from '../../../pages/MainPage/MainPage.js';
@@ -49,6 +50,10 @@ export default function useAppRoutes(): RouteObject[] {
             {
               path: '/favorite',
               element: <FavoritePage />,
+            },
+            {
+              path: '/drugstore',
+              element: <DrugstorePage />,
             },
           ],
         },

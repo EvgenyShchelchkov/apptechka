@@ -51,8 +51,8 @@ export default function MedicineCard({ medicineInstance }: MedicineCardProps): R
         <CardMedia
           component="img"
           height="140"
-          image={medicine.img}
-          alt={medicine.name}
+          image={medicine?.img}
+          alt={medicine?.name}
           sx={{
             objectFit: 'cover',
             width: '100%',

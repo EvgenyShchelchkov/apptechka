@@ -7,14 +7,14 @@ import { useAppDispatch, useAppSelector } from '../../shared/lib/hooks';
 
 export default function OneMedkitPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
+
   const { id } = useParams();
   const oneMedkit = useAppSelector((state) => state.medkit.medkitList);
-
-  console.log(oneMedkit);
 
   useEffect(() => {
     void dispatch(fetchOneMedkit(Number(id)));
   }, [dispatch, id]);
+
   return (
     <Box sx={{ padding: 2, position: 'relative' }}>
       <Typography variant="h4" gutterBottom>

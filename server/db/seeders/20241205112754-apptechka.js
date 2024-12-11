@@ -191,6 +191,52 @@ module.exports = {
         medicine_instance_id: 3,
       },
     ]);
+    await queryInterface.bulkInsert(
+      'Pharmacies',
+      [
+        {
+          name: 'Аптека Здоровье',
+          address: 'ул. Ленина, 1',
+          latitude: 55.751244,
+          longitude: 37.618423,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Социальная аптека',
+          address: 'пр. Мира, 10',
+          latitude: 55.753215,
+          longitude: 37.622504,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Аптека 36.6',
+          address: 'ул. Тверская, 15',
+          latitude: 55.757777,
+          longitude: 37.614231,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Планета Здоровья',
+          address: 'ул. Новый Арбат, 21',
+          latitude: 55.752625,
+          longitude: 37.582766,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: 'Ригла',
+          address: 'Кутузовский проспект, 30',
+          latitude: 55.741469,
+          longitude: 37.535461,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {},
+    );
   },
 
   async down(queryInterface, Sequelize) {

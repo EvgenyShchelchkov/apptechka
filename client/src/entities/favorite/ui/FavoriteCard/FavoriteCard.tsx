@@ -1,9 +1,10 @@
 // FavoriteCard.tsx
 import { Badge, Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../../shared/lib/hooks';
 import type { MedicineType } from '../../../medicine/model/types';
+import { setIsHovered } from '../../model/favorites.slice';
 import styles from './FavoriteCard.module.css';
 
 type FavoriteCardProps = {
@@ -13,9 +14,8 @@ type FavoriteCardProps = {
 export default function FavoriteCard({
   favoriteMedicinesId,
 }: FavoriteCardProps): React.JSX.Element {
-  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
-
+  const isHovered = useAppSelector((state) => state.favorite.isHovered);
   const medicine = useAppSelector((state) =>
     state.medicine.items.find((el) => el.id === favoriteMedicinesId),
   );
@@ -30,7 +30,7 @@ export default function FavoriteCard({
 
   const handleCardClick = (): void => {
     if (medicine) {
-      navigate(`/medkit/${medicine.id.toString()}`);
+      navigate(`/medkit/${medicine}`);
     }
   };
 
@@ -51,8 +51,8 @@ export default function FavoriteCard({
 
       <CardMedia
         component="img"
-        alt={medicine.name}
-        image={medicine.img}
+        alt={medicine?.name}
+        image={medicine?.img}
         className={`${styles.media} ${isHovered ? styles.mediaHovered : ''}`}
       />
 
@@ -61,12 +61,12 @@ export default function FavoriteCard({
           variant="h5"
           className={`${styles.title} ${isHovered ? styles.titleHovered : ''}`}
         >
-          {medicine.name}
+          {medicine?.name}
         </Typography>
 
         <Box className={`${styles.description} ${isHovered ? styles.descriptionHovered : ''}`}>
           <Typography variant="body1" className={styles.descriptionText}>
-            {medicine.description}
+            {medicine?.description}
           </Typography>
         </Box>
       </CardContent>
