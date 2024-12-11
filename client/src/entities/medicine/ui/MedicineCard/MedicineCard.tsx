@@ -6,6 +6,7 @@ import React from 'react';
 import { useAppDispatch } from '../../../../shared/lib/hooks';
 import { deleteMedicineThunk } from '../../model/medicine.thunks';
 import type { MedicineInstanceType } from '../../model/types';
+import { selectMedicine } from '../../model/medicine.slice';
 
 type MedicineCardProps = {
   medicineInstance: MedicineInstanceType;
@@ -60,10 +61,10 @@ export default function MedicineCard({ medicineInstance }: MedicineCardProps): R
           <IconButton color="error">
             <MedicalInformationTwoToneIcon />
           </IconButton>
-          <IconButton color="error">
+          <IconButton color="error" onClick={() => void dispatch(selectMedicine(medicineInstance.Medicine))}>
             <CreateIcon />
           </IconButton>
-          <IconButton color="error" onClick={() => deleteHandler(medicineInstance.id)}>
+          <IconButton color="error" onClick={() => deleteHandler(medicineInstance.Medicine?.id)}>
             <DeleteForeverTwoToneIcon />
           </IconButton>
         </Box>

@@ -57,6 +57,7 @@ export const medkitSlice = createSlice({
       })
       .addCase(fetchMedkits.rejected, (state) => {
         state.error = 'Ошибка получения данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(fetchOneMedkit.pending, (state) => {
@@ -68,6 +69,7 @@ export const medkitSlice = createSlice({
       })
       .addCase(fetchOneMedkit.rejected, (state) => {
         state.error = 'Ошибка получения данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(createMedkitThunk.pending, (state) => {
@@ -79,6 +81,7 @@ export const medkitSlice = createSlice({
       })
       .addCase(createMedkitThunk.rejected, (state) => {
         state.error = 'Ошибка добавления данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(updateMedkitThunk.pending, (state) => {
@@ -90,6 +93,7 @@ export const medkitSlice = createSlice({
       })
       .addCase(updateMedkitThunk.rejected, (state) => {
         state.error = 'Ошибка изменения данных!';
+        state.isLoading = false;
       });
     builder
       .addCase(deleteMedkitThunk.pending, (state) => {
@@ -101,6 +105,7 @@ export const medkitSlice = createSlice({
       })
       .addCase(deleteMedkitThunk.rejected, (state) => {
         state.error = 'Ошибка удаления данных!';
+        state.isLoading = false;
       });
   },
 });

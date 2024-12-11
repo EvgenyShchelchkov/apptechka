@@ -16,17 +16,17 @@ module.exports = {
 			{
 				name: 'Для дома',
 				user_id: 1,
-				img: 'img_medkits/first_kit.jpg',
+				img: '/img_medkits/first_kit.jpg',
 			},
 			{
 				name: 'Для машины',
 				user_id: 1,
-				img: 'img_medkits/first_kit.jpg',
+				img: '/img_medkits/first_kit.jpg',
 			},
 			{
 				name: 'В путешествие',
 				user_id: 1,
-				img: 'img_medkits/first_kit.jpg',
+				img: '/img_medkits/first_kit.jpg',
 			},
 		]);
 		await queryInterface.bulkInsert('Medicines', [
@@ -35,7 +35,7 @@ module.exports = {
 				description:
 					'Противовоспалительное, жаропонижающее и обезболивающее средство.',
 				code: 'IBP001',
-				img: 'img_medicines/1.avif',
+				img: '/img_medicines/1.avif',
 				presciption: 'Без рецепта',
 				category: 'Обезболивающие',
 			},
@@ -44,7 +44,7 @@ module.exports = {
 				description:
 					'Обезболивающее средство для снятия боли различного происхождения.',
 				code: 'ANL002',
-				img: 'img_medicines/2.avif',
+				img: '/img_medicines/2.avif',
 				presciption: 'Без рецепта',
 				category: 'Обезболивающие',
 			},
@@ -53,7 +53,7 @@ module.exports = {
 				description:
 					'Противовоспалительное средство, жаропонижающее и обезболивающее.',
 				code: 'PARA003',
-				img: 'img_medicines/3.avif',
+				img: '/img_medicines/3.avif',
 				presciption: 'Без рецепта',
 				category: 'Обезболивающие',
 			},
@@ -61,7 +61,7 @@ module.exports = {
 				name: 'Амоксициллин',
 				description: 'Антибиотик для лечения инфекций, вызванных бактериями.',
 				code: 'AMX004',
-				img: 'img_medicines/4.avif',
+				img: '/img_medicines/4.avif',
 				presciption: 'По рецепту',
 				category: 'Антибиотики',
 			},
@@ -69,7 +69,7 @@ module.exports = {
 				name: 'Цефтриаксон',
 				description: 'Антибиотик широкого спектра действия.',
 				code: 'CFT005',
-				img: 'img_medicines/5.avif',
+				img: '/img_medicines/5.avif',
 				presciption: 'По рецепту',
 				category: 'Антибиотики',
 			},
@@ -78,7 +78,7 @@ module.exports = {
 				description:
 					'Антибактериальный препарат, применяемый для лечения бактериальных инфекций.',
 				code: 'LEV006',
-				img: 'img_medicines/6.avif',
+				img: '/img_medicines/6.avif',
 				presciption: 'По рецепту',
 				category: 'Антибиотики',
 			},
@@ -87,7 +87,7 @@ module.exports = {
 				description:
 					'Противоспазматическое средство, которое помогает при болях в животе.',
 				code: 'NOS007',
-				img: 'img_medicines/7.avif',
+				img: '/img_medicines/7.avif',
 				presciption: 'Без рецепта',
 				category: 'Противоспазматические',
 			},
@@ -96,7 +96,7 @@ module.exports = {
 				description:
 					'Противоспазматическое средство для снятия болей в желудочно-кишечном тракте.',
 				code: 'DRT008',
-				img: 'img_medicines/8.avif',
+				img: '/img_medicines/8.avif',
 				presciption: 'Без рецепта',
 				category: 'Противоспазматические',
 			},
@@ -105,7 +105,7 @@ module.exports = {
 				description:
 					'Антигистаминное средство, применяемое при аллергических реакциях.',
 				code: 'FNS009',
-				img: 'img_medicines/9.avif',
+				img: '/img_medicines/9.avif',
 				presciption: 'Без рецепта',
 				category: 'Противоаллергические',
 			},
@@ -114,7 +114,7 @@ module.exports = {
 				description:
 					'Антигистаминное средство для лечения аллергических заболеваний.',
 				code: 'SPR010',
-				img: 'img_medicines/10.avif',
+				img: '/img_medicines/10.avif',
 				presciption: 'Без рецепта',
 				category: 'Противоаллергические',
 			},
@@ -123,7 +123,7 @@ module.exports = {
 				description:
 					'Противовоспалительное и обезболивающее средство, применяемое при болях.',
 				code: 'KTP011',
-				img: 'img_medicines/11.avif',
+				img: '/img_medicines/11.avif',
 				presciption: 'Без рецепта',
 				category: 'Обезболивающие',
 			},
@@ -132,7 +132,7 @@ module.exports = {
 				description:
 					'Антибиотик для лечения инфекций, вызванных чувствительными бактериями.',
 				code: 'CIP012',
-				img: 'img_medicines/12.avif',
+				img: '/img_medicines/12.avif',
 				presciption: 'По рецепту',
 				category: 'Антибиотики',
 			},
@@ -140,7 +140,7 @@ module.exports = {
 				name: 'Метоклопрамид',
 				description: 'Препарат для лечения тошноты и рвоты.',
 				code: 'MET013',
-				img: 'img_medicines/13.avif',
+				img: '/img_medicines/13.avif',
 				presciption: 'Без рецепта',
 				category: 'Противорвотные',
 			},
@@ -149,7 +149,7 @@ module.exports = {
 				description:
 					'Кортикостероид, используемый для лечения воспалительных заболеваний.',
 				code: 'DEX014',
-				img: 'img_medicines/14.avif',
+				img: '/img_medicines/14.avif',
 				presciption: 'По рецепту',
 				category: 'Кортикостероиды',
 			},
@@ -157,7 +157,7 @@ module.exports = {
 				name: 'Лоратадин',
 				description: 'Антигистаминное средство для лечения аллергии.',
 				code: 'LOR015',
-				img: 'img_medicines/15.avif',
+				img: '/img_medicines/15.avif',
 				presciption: 'Без рецепта',
 				category: 'Противоаллергические',
 			},

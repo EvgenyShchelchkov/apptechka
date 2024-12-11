@@ -5,13 +5,14 @@ const medicineRouter = require('express').Router();
 
 medicineRouter
   .route('/')
-  .get(medicineController.getAllMedicines)
-  .post(verifyAccessToken, upload.single('file'), medicineController.createMedicine);
+  .get(medicineController.getAllMedicines);
+  // .post(verifyAccessToken, upload.single('file'), medicineController.createMedicine);
 
 medicineRouter
   .route('/:id')
+  .post(verifyAccessToken, upload.single('img'), medicineController.createMedicine)
   .get(medicineController.getOneMedicine)
-  .delete(verifyAccessToken, medicineController.updateMedicine)
-  .put(verifyAccessToken, medicineController.deleteMedicine);
+  .put(medicineController.updateMedicine)
+  .delete(verifyAccessToken, medicineController.deleteMedicine);
 
 module.exports = medicineRouter;

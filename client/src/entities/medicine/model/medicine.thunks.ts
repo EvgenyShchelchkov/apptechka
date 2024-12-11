@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import medicineService from '../api/medicine.service';
+// import medicineService from '../api/medicine.service';
 import { medicineFormSchema } from './medicine.schema';
+import medicineService from '../api/medicine.service';
 
 // First, create the thunk
 export const fetchMedicines = createAsyncThunk('medicine/fetchMedicines', () =>
@@ -9,18 +10,27 @@ export const fetchMedicines = createAsyncThunk('medicine/fetchMedicines', () =>
 
 export const createMedicineThunk = createAsyncThunk(
   'medicine/createMedicine',
-  (formData: FormData) => {
-    const data = Object.fromEntries(formData);
+  ({formData, id}: {formData: FormData, id: number}) => {
+    try {
+      const data = Object.fromEntries(formData)
+      console.log(data, "------------------------------------------------------------------------------------------")
     const parsedData = medicineFormSchema.parse(data);
-    return medicineService.createMedicine(parsedData);
+
+    return medicineService.createMedicine(formData, id);
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
   },
 );
-
+// defaultValue={medicine?.name}
 export const updateMedicineThunk = createAsyncThunk(
   'medicine/updateMedicine',
   ({ id, formData }: { id: number; formData: FormData }) => {
     const data = Object.fromEntries(formData);
     const parsedData = medicineFormSchema.parse(data);
+    
     return medicineService.updateMedicine(id, parsedData);
   },
 );

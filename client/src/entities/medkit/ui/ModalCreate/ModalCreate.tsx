@@ -1,5 +1,17 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Button, IconButton, Modal, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Modal,
+  NativeSelect,
+  Select,
+  TextField,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../shared/lib/hooks';
 import { closeCreateModal } from '../../model/medkit.slice';
@@ -43,15 +55,22 @@ export default function ModalCreate(): React.JSX.Element {
             required
             className={styles.textField}
           />
-          <TextField
-            fullWidth
-            name="img"
-            label="URL изображения"
-            variant="outlined"
-            margin="normal"
-            defaultValue="/medkit/first_kit.jpg"
-            className={styles.textField}
-          />
+
+          <FormControl sx={{ m: 1, minWidth: 150, marginLeft: 1 }}>
+            <InputLabel id="demo-simple-select-autowidth-label">Цвет аптечки</InputLabel>
+            <Select
+              name="img"
+              label="Цвет аптечки"
+              labelId="demo-simple-select-autowidth-label"
+              id="demo-simple-select-autowidth"
+              autoWidth
+            >
+              <MenuItem value="/medkit/first_kit.jpg">Красная</MenuItem>
+              <MenuItem value="/medkit/second_kit.jpg">Желтая</MenuItem>
+              <MenuItem value="/medkit/third_kit.jpg">Зеленая</MenuItem>
+            </Select>
+          </FormControl>
+
           <Box className={styles.buttonContainer}>
             <Button type="submit" variant="contained" className={styles.createButton}>
               Создать
